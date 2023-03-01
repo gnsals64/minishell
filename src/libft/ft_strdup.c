@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:12:51 by hunpark           #+#    #+#             */
-/*   Updated: 2022/07/28 15:42:42 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/02/27 00:00:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strdup(const char *s)
 	int		len;
 	char	*tmp;
 
+	if (!s)
+		return (NULL);
 	len = ft_strlen(s);
 	tmp = (char *)malloc(sizeof(char) * (len + 1));
 	if (!tmp)

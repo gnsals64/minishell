@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 21:54:29 by hunpark           #+#    #+#              #
-#    Updated: 2023/01/31 10:49:00 by hunpark          ###   ########.fr        #
+#    Updated: 2023/02/27 13:15:20 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,40 +22,18 @@ SRCS = ft_isdigit.c ft_strrchr.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii
 	ft_split.c ft_strjoin.c ft_strtrim.c ft_substr.c ft_itoa.c ft_strmapi.c \
 	ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 
-SRCS_BN = ft_lstnew.c		\
-		  ft_lstsize.c		\
-		  ft_lstadd_front.c	\
-		  ft_lstadd_back.c	\
-		  ft_lstclear.c		\
-		  ft_lstlast.c		\
-		  ft_lstiter.c		\
-		  ft_lstmap.c		\
-		  ft_lstdelone.c	\
-
 OBJS = $(SRCS:.c=.o)
 
-OBJS_BN = $(SRCS_BN:.c=.o)
-
-ifdef WITH_BONUS
-	OBJ_FILES = $(OBJS) $(OBJS_BN)
-else
-	OBJ_FILES = $(OBJS)
-endif
-
 all : $(NAME)
-	sleep 1
 
 %.o : %.c
 	$(CC) $(CFLAG) -c $< -o $@ -I .
 
-$(NAME) : $(OBJ_FILES)
-	$(AR) $(NAME) $(OBJ_FILES)
-
-bonus :
-	make WITH_BONUS=1 all
+$(NAME) : $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
 clean :
-	$(RM) $(OBJS) $(OBJS_BN)
+	$(RM) $(OBJS)
 
 fclean : clean
 	$(RM) $(NAME)

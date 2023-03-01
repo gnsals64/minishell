@@ -1,0 +1,9 @@
+{
+	"files.associations": {
+		"minishell.h": "c",
+		"data_list.h": "c",
+		"libft.h": "c",
+		"stdlib.h": "c"
+	},
+	"C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
+}

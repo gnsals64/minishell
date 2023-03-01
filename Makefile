@@ -3,28 +3,32 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 21:41:07 by hunpark           #+#    #+#              #
-#    Updated: 2023/02/23 22:48:40 by hunpark          ###   ########.fr        #
+#    Updated: 2023/03/01 17:18:36 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = cc
 FLAG = -Wall -Werror -Wextra
-COMFILE_FLAGS = -lreadline -L${HOME}/.brew/opt/readline/lib
-INCLUDE_FLAGS = -I${HOME}/.brew/opt/readline/include
+INC = -I ./inc
+COMFILE_FLAGS = -lreadline -L$(shell brew --prefix readline)/lib
+INCLUDE_FLAGS = -I$(shell brew --prefix readline)/include
 
-SRCS = ./src/minishell.c \
+PARSER = $(addprefix parser/, parser tokenizer_utils tokenizer lexer isspecial lexer_utils)
+FILES = $(addprefix src/, init minishell signals ${UTILS} ${PARSER})
 
-LIBFT = ./libft
+SRCS = ${FILES:=.c}
+
+LIBFT = ./src/libft
 
 all : ${NAME}
 
 ${NAME} :
 	@make -C ${LIBFT}
-	${CC} ${FLAG} ${SRCS} ${COMFILE_FLAGS} ${INCLUDE_FLAGS} ${LIBFT}/libft.a -o ${NAME}
+	${CC} -g ${FLAG} ${SRCS} ${INC} -lreadline ${LIBFT}/libft.a -o ${NAME}
 
 clean :
 	@make clean -C ${LIBFT}
