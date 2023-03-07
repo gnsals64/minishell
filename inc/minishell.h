@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/01 18:09:44 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/07 19:18:31 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <readline/history.h>
 # include <signal.h>
 # include "data_list.h"
+# include "execute.h"
 # include "../src/libft/libft.h"
 
 //--- parser ---
