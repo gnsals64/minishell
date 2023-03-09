@@ -1,29 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   execute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 14:51:37 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/09 20:58:00 by sooyang          ###   ########.fr       */
+/*   Created: 2023/03/07 19:14:19 by sooyang           #+#    #+#             */
+/*   Updated: 2023/03/09 23:10:27 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#ifndef EXECUTE_H
+# define EXECUTE_H
 
-void	ft_pwd(void)
+# define MAX_BUF 4096
+
+typedef struct s_env
 {
-	char	pwd[MAX_BUF];
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}	t_env;
 
-	if (!getcwd(pwd, MAX_BUF))
-	{
-		ft_putstr_fd("pwd error\n", 2);
-		return ;
-	}
-	else
-	{
-		printf("%s\n", pwd);
-		return ;
-	}
-}
+//builtin_utils.c
+int		ft_strcmp(const char *s1, const char *s2);
+t_env	*set_add_env(t_env *env, char *key);
+//ft_cd.c
+void	ft_cd(t_node *node);
+//fd_echo.c
+
+//ft_env.c
+
+//ft_exit.c
+
+//ft_export.c
+
+//ft_pwd.c
+
+//ft_unset.c
+
+
+#endif

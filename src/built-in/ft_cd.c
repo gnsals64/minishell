@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:10 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/07 20:32:14 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/07 20:42:17 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_cd(t_node *node)
 		return ;
 	}
 	path = node->cmd[1];
-	if (chdir(path) || !getcwd(pwd, MAX_BUF))
+	if (chdir(path) == -1 || !getcwd(pwd, MAX_BUF))
 	{
 		ft_putstr_fd("fail directory change\n", 2);
 		return ;
