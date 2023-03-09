@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 21:41:07 by hunpark           #+#    #+#              #
-#    Updated: 2023/03/01 17:18:36 by marvin           ###   ########.fr        #
+#    Updated: 2023/03/07 15:01:57 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ INC = -I ./inc
 COMFILE_FLAGS = -lreadline -L$(shell brew --prefix readline)/lib
 INCLUDE_FLAGS = -I$(shell brew --prefix readline)/include
 
-PARSER = $(addprefix parser/, parser tokenizer_utils tokenizer lexer isspecial lexer_utils)
+PARSER = $(addprefix parser/, parser tokenizer_utils tokenizer lexer isspecial lexer_utils make_argv)
 FILES = $(addprefix src/, init minishell signals ${UTILS} ${PARSER})
 
 SRCS = ${FILES:=.c}

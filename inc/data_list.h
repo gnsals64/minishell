@@ -40,11 +40,28 @@ typedef struct s_state
 	t_bool	double_quote;
 }	t_state;
 
+typedef struct s_redirect
+{
+	char				*operator;
+	char				*filename;
+	int					fd;
+	struct s_redirect	*next;
+}	t_redirect;
+
+typedef struct s_argv
+{
+	char				**cmd;
+	struct s_redirect	*dir;
+	struct s_redirect	*dir_head;
+	struct s_argv		*next;
+}	t_argv;
+
 typedef struct s_node
 {
-	char	*str;
-	char	type;
-	struct s_node *next;
+	char			*str;
+	char			type;
+	struct s_node	*next;
+	struct s_node	*prev;
 }	t_node;
 
 typedef struct s_data
@@ -53,6 +70,8 @@ typedef struct s_data
 	char			**env;
 	t_node			*move;
 	t_node			*head;
+	t_argv			*argv_head;
+	t_argv			*argv_cur;
 }	t_data;
 
 enum e_token	type;
