@@ -6,18 +6,11 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:10 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/07 20:42:17 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/09 23:17:52 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
-
-typedef struct s_node
-{
-	char	**cmd;
-	char	type;
-	struct s_node *next;
-}	t_node;
 
 /* cd 성공한 뒤에 환경변수 PWD의 값도 변경해야 함 */
 void	ft_cd(t_node *node)
