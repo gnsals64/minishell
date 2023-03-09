@@ -26,7 +26,8 @@ int	find_split_len(char *str)
 	while (str[i])
 	{
 		quote_state(str[i], &state);
-		if (quote_check(&state) && str[i] != ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
+		if (quote_check(&state) && str[i] != ' '
+			&& (str[i + 1] == ' ' || str[i + 1] == '\0'))
 			len++;
 		i++;
 	}
@@ -84,6 +85,6 @@ char	**ft_tokenizer(char *str)
 		// 	ft_free_line(save, i);
 		i++;
 	}
-	save[len] = '\0';
+	save[len] = NULL;
 	return (save);
 }

@@ -12,92 +12,6 @@
 
 #include "../../inc/minishell.h"
 
-int	ft_argv_cnt(t_data *data)
-{
-	int		len;
-	t_node *tmp;
-
-	len = 0;
-	tmp = data->move;
-	while (tmp != NULL)
-	{
-		if (tmp->type == WORD && (tmp->prev == NULL ||
-			tmp->prev->type == WORD || tmp->prev->type == PIPE_LINE))
-			len++;
-		if (tmp->type == PIPE_LINE)
-			break ;
-		tmp = tmp->next;
-	}
-	return (len);
-}
-
-void	argv_pipe(t_data *data, int *i)
-{
-	if (data->argv_cur->cmd)
-		data->argv_cur->cmd[*i] = NULL;
-	data->move = data->move->next;
-	*i = 0;
-}
-
-t_redirect	*ft_make_dir_node(t_data *data)
-{
-	t_redirect	*node;
-
-	node = (t_redirect *)malloc(sizeof(t_redirect));
-	if (!node)
-		return (NULL);
-	node->operator = ft_strdup(data->move->str);
-	data->move = data->move->next;
-	if (data->move == NULL)
-		return (node);
-	if (data->move->type != WORD)
-		return (NULL);
-	node->filename = ft_strdup(data->move->str);
-	data->move = data->move->next;
-	node->next = NULL;
-	return (node);
-}
-
-void	argv_dir(t_data	*data)
-{
-	if (!data->argv_cur->dir)
-	{
-		data->argv_cur->dir = ft_make_dir_node(data);
-		data->argv_cur->dir_head = data->argv_cur->dir;
-		if (!data->argv_cur->dir)
-			return ;
-		return ;
-	}
-	data->argv_cur->dir->next = ft_make_dir_node(data);
-	if (!data->argv_cur->dir->next)
-			return ;
-	data->argv_cur->dir = data->argv_cur->dir->next;
-}
-
-void	argv_word(t_data *data, int *i)
-{
-	int	len;
-
-	if (!data->argv_cur->cmd)
-	{
-		len = ft_argv_cnt(data);
-		data->argv_cur->cmd = (char **)malloc(sizeof(char *) * (len + 1));
-		if (!data->argv_cur->cmd)
-			return ;
-		data->argv_cur->cmd[*i] = ft_strdup(data->move->str);
-		if (!data->argv_cur->cmd[*i])
-			return ;
-		(*i)++;
-		data->move = data->move->next;
-		return ;
-	}
-	data->argv_cur->cmd[*i] = ft_strdup(data->move->str);
-	if (!data->argv_cur->cmd[*i])
-		return ;
-	(*i)++;
-	data->move = data->move->next;
-}
-
 int	ft_creat_argv(t_data *data, int *i)
 {
 	if (data->move == NULL)
@@ -129,11 +43,11 @@ void	ft_merge_data(t_data *data, int *i)
 	}
 	data->argv_cur->next = (t_argv *)malloc(sizeof(t_argv));
 	if (!data->argv_cur->next)
-			return ;
+		return ;
 	ft_memset(data->argv_cur->next, 0, sizeof(t_argv));
 	data->argv_cur = data->argv_cur->next;
 	while (ft_creat_argv(data, i) != -1)
-			;
+		;
 }
 
 void	make_argv(t_data *data)

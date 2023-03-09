@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/09 04:30:48 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/09 20:11:20 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,14 @@ void		argv_pipe(t_data *data, int *i);
 //--- utils ---
 
 
+//--- env ---
+int			ft_env_creat(t_data *data, char *env);
+t_env		*env_node_creat(char *env);
+
 //--- main ---
-t_data	*ft_init(char **env);
-void	run_program(t_data *data);
-void	handler(int signum);
+t_data		*ft_init(char **env);
+void		run_program(t_data *data);
+void		handler(int signum);
 
 
 #endif

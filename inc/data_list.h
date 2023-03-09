@@ -40,6 +40,14 @@ typedef struct s_state
 	t_bool	double_quote;
 }	t_state;
 
+typedef struct s_env
+{
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+	struct s_env	*prev;
+}	t_env;
+
 typedef struct s_redirect
 {
 	char				*operator;
@@ -67,7 +75,8 @@ typedef struct s_node
 typedef struct s_data
 {
 	int				cnt;
-	char			**env;
+	t_env			*env;
+	t_env			*env_head;
 	t_node			*move;
 	t_node			*head;
 	t_argv			*argv_head;

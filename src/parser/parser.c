@@ -62,6 +62,6 @@ int	ft_parsing(char *str, t_data *data)
 	lexer(line, data);
 	data->move = data->head;
 	make_argv(data);
-	print_node(data);
+	//print_node(data);
 	return (0);
 }
