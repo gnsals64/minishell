@@ -55,11 +55,16 @@ void	print_node(t_data *data)
 int	ft_parsing(char *str, t_data *data)
 {
 	char	**line;
+	int		i;
 
+	i = -1;
 	line = ft_tokenizer(str);
 	if (!line)
 		return (-1);
 	lexer(line, data);
+	while (line[++i])
+		free(line[i]);
+	free(line);
 	data->move = data->head;
 	make_argv(data);
 	//print_node(data);

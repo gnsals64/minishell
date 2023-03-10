@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/09 20:11:20 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/10 18:51:35 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,25 @@ void		argv_word(t_data *data, int *i);
 void		argv_dir(t_data	*data);
 t_redirect	*ft_make_dir_node(t_data *data);
 void		argv_pipe(t_data *data, int *i);
+void		rm_quote(t_data *data);
+int			handle_double_quote(t_data *data, char *str);
+int			handle_single_quote(t_data *data, char *str);
 
 //--- utils ---
-
 
 //--- env ---
 int			ft_env_creat(t_data *data, char *env);
 t_env		*env_node_creat(char *env);
 
+//--- free ---
+void		ft_token_free(t_data *data);
+void		ft_dir_free(t_data *data);
+void		ft_argv_free(t_data *data);
+void		ft_free_all(t_data *data);
+
 //--- main ---
 t_data		*ft_init(char **env);
 void		run_program(t_data *data);
 void		handler(int signum);
-
 
 #endif

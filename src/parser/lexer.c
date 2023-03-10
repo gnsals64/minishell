@@ -43,6 +43,8 @@ int	ft_creat_node(char *s, t_data *data)
 		tmp = ft_substr(s, i, len);
 		if (ft_save_node(tmp, type, data) == -1)
 			return (-1);
+		free(tmp);
+		tmp = NULL;
 		i += len;
 	}
 	return (0);
@@ -59,4 +61,5 @@ void	lexer(char **line, t_data *data)
 			return ;
 		i++;
 	}
+	rm_quote(data);
 }

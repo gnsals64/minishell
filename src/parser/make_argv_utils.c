@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 20:20:45 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/09 20:22:06 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/10 18:48:06 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	argv_word(t_data *data, int *i)
 			return ;
 		(*i)++;
 		data->move = data->move->next;
+		data->argv_cur->cmd[len] = NULL;
 		return ;
 	}
 	data->argv_cur->cmd[*i] = ft_strdup(data->move->str);
