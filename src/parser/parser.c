@@ -52,12 +52,51 @@ void	print_node(t_data *data)
 	}
 }
 
+int	ft_change_str_len(char *str, t_data *data)
+{
+	int		i;
+	int		len;
+	t_state	state;
+
+	i = 0;
+	len = 0;
+	ft_memset(&state, 0, sizeof(t_state));
+	while (str[i])
+	{
+		quote_state(str[i], &state);
+		if (str[i] == '&' && state.qoute == false)
+		len++;
+		i++;
+	}
+}
+
+char	*ft_change_str(char *str, t_data *data)
+{
+	char	*tmp;
+	int		i;
+	t_state	state;
+	int		len;
+
+	i = 0;
+	len = ft_change_str_len(str, data);
+	ft_memset(&state, 0, sizeof(t_state));
+	while (str[i])
+	{
+		quote_state(str[i], &state);
+		if (state.qoute == false && str[i] == '$')
+
+		i++;
+	}
+}
+
 int	ft_parsing(char *str, t_data *data)
 {
 	char	**line;
 	int		i;
+	char	*load_env;
 
 	i = -1;
+	load_env = ft_change_str(str, data);
 	line = ft_tokenizer(str);
 	if (!line)
 		return (-1);
