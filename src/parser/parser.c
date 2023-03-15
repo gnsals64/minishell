@@ -52,10 +52,62 @@ void	print_node(t_data *data)
 	}
 }
 
+char	*ft_strndup(char *str, int n)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	if (!str)
+		return (NULL);
+	tmp = (char *)malloc(sizeof(char) * (n + 1));
+	if (!tmp)
+		return (NULL);
+	while (i < n)
+	{
+		tmp[i] = str[i];
+		i++;
+	}
+	tmp[i] = '\0';
+	return (tmp);
+}
+
+int	ft_envlen(char *str, t_state *state)
+{
+	int	i;
+
+	i = 0;
+	while (*str != ' ' && *str != '\n')
+	{
+		if (*str == 0)
+			return (i);
+		if (state->double_quote == true && *str == '\"')
+			return (i);
+		i++;
+		str++;
+	}
+	return (i);
+}
+
+char	*ft_find_env(char *str, t_data *data)
+{
+	t_env	*cur;
+
+	cur = data->env_head;
+	while (cur != NULL)
+	{
+		if (ft_strncmp(str, cur->key, ft_strlen(str)) == 0)
+			return (cur->value);
+		cur = cur->next;
+	}
+	return (NULL);
+}
+
 int	ft_change_str_len(char *str, t_data *data)
 {
 	int		i;
 	int		len;
+	char	*tmp;
 	t_state	state;
 
 	i = 0;
@@ -64,29 +116,60 @@ int	ft_change_str_len(char *str, t_data *data)
 	while (str[i])
 	{
 		quote_state(str[i], &state);
-		if (str[i] == '&' && state.qoute == false)
+		if (str[i] == '$' && state.qoute == false)
+		{
+			tmp = ft_strndup(&str[i + 1], ft_envlen(&str[i + 1], &state));
+			i += ft_strlen(tmp) + 1;
+			len += ft_strlen(ft_find_env(tmp, data));
+			free(tmp);
+			continue ;
+		}
 		len++;
 		i++;
 	}
+	return (len);
+}
+
+void	ft_change_env_dup(char *str, char **change_str, t_data *data, t_state *state)
+{
+	int		i;
+	int		j;
+	char	*tmp;
+
+	i = 0;
+	j = 0;
+	while (str[j])
+	{
+		quote_state(str[j], state);
+		if (str[j] == '$' && state->qoute == false)
+		{
+			tmp = ft_strndup(&str[j + 1], ft_envlen(&str[j + 1], state));
+			j += ft_strlen(tmp) + 1;
+			*change_str = ft_strjoin(*change_str, ft_find_env(tmp, data));
+			i = ft_strlen(*change_str);
+			free(tmp);
+			continue ;
+		}
+		(*change_str)[i] = str[j];
+		i++;
+		j++;
+	}
+	(*change_str)[i] = '\0';
 }
 
 char	*ft_change_str(char *str, t_data *data)
 {
 	char	*tmp;
-	int		i;
 	t_state	state;
 	int		len;
 
-	i = 0;
 	len = ft_change_str_len(str, data);
+	tmp = ft_calloc(sizeof(char), len + 1);
+	if (!tmp)
+		return (NULL);
 	ft_memset(&state, 0, sizeof(t_state));
-	while (str[i])
-	{
-		quote_state(str[i], &state);
-		if (state.qoute == false && str[i] == '$')
-
-		i++;
-	}
+	ft_change_env_dup(str, &tmp, data, &state);
+	return (tmp);
 }
 
 int	ft_parsing(char *str, t_data *data)
@@ -97,7 +180,7 @@ int	ft_parsing(char *str, t_data *data)
 
 	i = -1;
 	load_env = ft_change_str(str, data);
-	line = ft_tokenizer(str);
+	line = ft_tokenizer(load_env);
 	if (!line)
 		return (-1);
 	lexer(line, data);

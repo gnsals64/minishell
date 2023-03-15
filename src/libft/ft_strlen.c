@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:01:48 by hunpark           #+#    #+#             */
-/*   Updated: 2022/07/13 20:14:23 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/15 23:49:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const char *s)
 	int	a;
 
 	a = 0;
+	if (!s)
+		return (0);
 	while (*s++)
 		a++;
 	return (a);
