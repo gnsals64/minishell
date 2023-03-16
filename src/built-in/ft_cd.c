@@ -6,14 +6,26 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:10 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/09 23:17:52 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/15 13:43:15 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-/* cd 성공한 뒤에 환경변수 PWD의 값도 변경해야 함 */
-void	ft_cd(t_node *node)
+void	change_pwd_env(char *pwd, t_env *env)
+{
+	t_env	*pwd_env;
+
+	pwd_env = find_env(env, "PWD");
+	if (pwd)
+		pwd_env->value = ft_strdup(pwd);
+	else
+		pwd_env->value = ft_strdup("");
+	if (!pwd_env->value)
+		ft_putstr_fd("memory error",2);
+}
+
+void	ft_cd(t_node *node, t_env *env)
 {
 	char	*path;
 	char	pwd[MAX_BUF];
@@ -29,4 +41,5 @@ void	ft_cd(t_node *node)
 		ft_putstr_fd("fail directory change\n", 2);
 		return ;
 	}
+	change_pwd_env(pwd, env);
 }
