@@ -21,8 +21,6 @@ int	find_split_len(char *str)
 	i = 0;
 	len = 0;
 	ft_memset(&state, 0, sizeof(t_state));
-	while (str[i] == ' ' && str[i])
-		i++;
 	while (str[i])
 	{
 		quote_state(str[i], &state);
@@ -31,8 +29,23 @@ int	find_split_len(char *str)
 			len++;
 		i++;
 	}
-	if (!quote_check(&state))
-		len = -1;
+	return (len);
+}
+
+int	ft_dup_line_len(char *str, int **index)
+{
+	int		len;
+	t_state	state;
+
+	len = 0;
+	ft_memset(&state, 0, sizeof(state));
+	while (str[**index] && !(quote_check(&state) && str[**index] == ' '))
+	{
+		if (quote_state(str[**index], &state) == 0)
+			len++;
+		(**index)++;
+	}
+	(**index)++;
 	return (len);
 }
 
@@ -41,24 +54,26 @@ char	*ft_dup_line(char *str, int *index)
 	char	*tmp;
 	int		i;
 	int		len;
+	int		start;
 	t_state	state;
 
-	i = -1;
+	i = 0;
 	len = 0;
+	start = *index;
 	ft_memset(&state, 0, sizeof(state));
-	while (str[*index] == ' ')
-		(*index)++;
-	while (str[*index] && !(quote_check(&state) && str[*index] == ' '))
-	{
-		quote_state(str[*index], &state);
-		(*index)++;
-		len++;
-	}
+	len = ft_dup_line_len(str, &index);
 	tmp = (char *)malloc(sizeof(char) * len + 1);
 	if (!tmp)
 		return (NULL);
-	while (++i < len)
-		tmp[i] = str[*index - len + i];
+	while (i < len)
+	{
+		if (quote_state(str[start], &state) == 0)
+		{
+			tmp[i] = str[start];
+			i++;
+		}
+		start++;
+	}
 	tmp[i] = '\0';
 	return (tmp);
 }
@@ -73,8 +88,6 @@ char	**ft_tokenizer(char *str)
 	i = 0;
 	j = 0;
 	len = find_split_len(str);
-	if (len == -1)
-		return (NULL);
 	save = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!save)
 		return (NULL);

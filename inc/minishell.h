@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/10 18:51:35 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/19 02:12:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 //--- parser ---
 int			ft_parsing(char *str, t_data *data);
-void		quote_state(char c, t_state *state);
+int			quote_state(char c, t_state *state);
 int			find_split_len(char *str);
 t_bool		quote_check(t_state *state);
 char		*ft_dup_line(char *str, int *index);
@@ -49,6 +49,7 @@ int			handle_double_quote(t_data *data, char *str);
 int			handle_single_quote(t_data *data, char *str);
 
 //--- utils ---
+int			ft_isspace(char c);
 
 //--- env ---
 int			ft_env_creat(t_data *data, char *env);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 21:41:07 by hunpark           #+#    #+#              #
-#    Updated: 2023/03/10 16:24:28 by hunpark          ###   ########.fr        #
+#    Updated: 2023/03/19 01:26:51 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ COMFILE_FLAGS = -lreadline -L$(shell brew --prefix readline)/lib
 INCLUDE_FLAGS = -I$(shell brew --prefix readline)/include
 
 PARSER = $(addprefix parser/, parser tokenizer_utils tokenizer lexer isspecial lexer_utils make_argv make_argv_utils rm_quote)
+UTILS = $(addprefix utils/, utils)
 FILES = $(addprefix src/, init minishell signals env ft_free ${UTILS} ${PARSER})
 
 SRCS = ${FILES:=.c}

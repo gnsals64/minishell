@@ -112,6 +112,8 @@ int	ft_change_str_len(char *str, t_data *data)
 
 	i = 0;
 	len = 0;
+	while (ft_isspace(str[i]) == 1 && str[i])
+		i++;
 	ft_memset(&state, 0, sizeof(t_state));
 	while (str[i])
 	{
@@ -127,6 +129,8 @@ int	ft_change_str_len(char *str, t_data *data)
 		len++;
 		i++;
 	}
+	if (!quote_check(&state))
+		len = -1;
 	return (len);
 }
 
@@ -138,6 +142,8 @@ void	ft_change_env_dup(char *str, char **change_str, t_data *data, t_state *stat
 
 	i = 0;
 	j = 0;
+	while (ft_isspace(str[j]) == 1 && str[j])
+		j++;
 	while (str[j])
 	{
 		quote_state(str[j], state);
@@ -164,6 +170,11 @@ char	*ft_change_str(char *str, t_data *data)
 	int		len;
 
 	len = ft_change_str_len(str, data);
+	if (len == -1)
+	{
+		write(2, "close the quote\n", 16);
+		return (NULL);
+	}
 	tmp = ft_calloc(sizeof(char), len + 1);
 	if (!tmp)
 		return (NULL);
@@ -180,14 +191,17 @@ int	ft_parsing(char *str, t_data *data)
 
 	i = -1;
 	load_env = ft_change_str(str, data);
+	if (!load_env)
+		return (-1);
 	line = ft_tokenizer(load_env);
+	for (int j = 0; line[j] != NULL; j++)
+		printf("%s\n", line[j]);
 	if (!line)
 		return (-1);
 	lexer(line, data);
 	while (line[++i])
 		free(line[i]);
 	free(line);
-	data->move = data->head;
 	make_argv(data);
 	//print_node(data);
 	return (0);
