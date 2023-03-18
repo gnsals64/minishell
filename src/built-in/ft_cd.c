@@ -6,12 +6,13 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:10 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/15 13:43:15 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/17 13:40:20 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
+//oldpwd 만들려면 여기에 조건 하나 추가하면 됨
 void	change_pwd_env(char *pwd, t_env *env)
 {
 	t_env	*pwd_env;

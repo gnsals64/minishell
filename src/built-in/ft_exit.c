@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:49:05 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/17 00:41:58 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/17 13:40:02 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,17 @@
 
 int	is_valid_exit_command(char *str)
 {
-	
+	int	i;
+
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i++]))
+			return (0);
+	}
+	return (1);
 }
 
 void	ft_exit(t_node *node)

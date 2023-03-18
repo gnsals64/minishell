@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:37 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/09 20:58:00 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/17 13:40:15 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_pwd(void)
 	if (!getcwd(pwd, MAX_BUF))
 	{
 		ft_putstr_fd("pwd error\n", 2);
-		return ;
+		exit (1);
 	}
 	else
 	{
