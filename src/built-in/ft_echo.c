@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:50:59 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/17 13:39:57 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/19 13:22:29 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void	ft_echo(t_node *node)
 	}
 	if (!n_option)
 		write(1, "\n", 1);
+	g_global.exit_code = 0;
 }

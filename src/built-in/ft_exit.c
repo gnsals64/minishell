@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:49:05 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/17 13:40:02 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/19 13:21:42 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_exit(t_node *node)
 	if (node->cmd[1] != 0 && node->cmd[2] != 0)
 	{
 		ft_putstr_fd("exit: too many arguments\n", 2);
+		g_global.exit_code = 1;
 		return ;
 	}
 	exit_code = ft_atoi(*(node->cmd[1]));

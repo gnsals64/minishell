@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:37 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/17 13:40:15 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/19 13:09:19 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ void	ft_pwd(void)
 	{
 		ft_putstr_fd("pwd error\n", 2);
 		exit (1);
+		g_global.exit_code = 1;
 	}
 	else
 	{
 		printf("%s\n", pwd);
 		return ;
+		g_global.exit_code = 0;
 	}
 }

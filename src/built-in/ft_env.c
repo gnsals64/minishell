@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:50:40 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/17 13:40:01 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/19 13:21:53 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_env(t_node *node, t_env *env)
 	if (node->cmd[1])
 	{
 		printf("env: {%s}: No such file or directory\n", node->cmd[1]);
+		g_global.exit_code = 127;
 		return ;
 	}
 	cursor = env;
@@ -27,4 +28,5 @@ void	ft_env(t_node *node, t_env *env)
 		printf("%s=%s\n", cursor->key, cursor->value);
 		cursor = cursor->next;
 	}
+	g_global.exit_code = 0;
 }

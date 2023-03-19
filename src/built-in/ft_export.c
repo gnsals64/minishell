@@ -6,25 +6,26 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:22 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/18 18:53:22 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/19 13:21:17 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	print_export_env(t_env *env)
+void	print_export_env(void)
 {
 	t_env	*cur;
 
-	cur = env;
-	while (cur != NULL)
+	cur = g_global.env_lst;
+	while (cur)
 	{
-		printf("declare -x %s", env->key);
-		if (env->value)
-			printf("=\"%s\"", env->value);
+		printf("declare -x %s", cur->key);
+		if (cur->value)
+			printf("=\"%s\"", cur->value);
 		printf("\n");
-		env = env->next;
+		cur = cur->next;
 	}
+	g_global.exit_code = 0;
 }
 
 char	**find_key_value(char *arg)
@@ -71,6 +72,7 @@ int	is_valid_name(char *key, char *all)
 	if (!ft_isalpha(key[++i]) || key[i] != '_')
 	{
 		printf("export: `%s': not a valid identifier\n", all);
+		g_global.exit_code = 1;
 		return (0);
 	}
 	while (key[++i])
@@ -79,9 +81,11 @@ int	is_valid_name(char *key, char *all)
 			key[i] != '_')
 		{
 			printf("export: `%s': not a valid identifier\n", all);
+			g_global.exit_code = 1;
 			return (0);
 		}
 	}
+	g_global.exit_code = 0;
 	return (1);
 }
 
@@ -95,7 +99,7 @@ void	double_free_arg(char **argument)
 	free(argument);
 }
 
-void	ft_export(t_node *node, t_env *env)
+void	ft_export(t_node *node)
 {
 	t_env	*cur;
 	char	**argument;
@@ -103,7 +107,7 @@ void	ft_export(t_node *node, t_env *env)
 
 	if (!node->cmd[1])
 	{
-		print_export_env(env);
+		print_export_env();
 		return ;
 	}
 	i = 0;
@@ -112,7 +116,7 @@ void	ft_export(t_node *node, t_env *env)
 		argument = find_key_value(node->cmd[i]);
 		if (is_valid_name(argument[0], node->cmd[i]))
 		{
-			cur = set_add_env(env, argument[0]);
+			cur = set_add_env(node->cmd[i]);
 			if (argument[1])
 			{
 				free(cur->value);

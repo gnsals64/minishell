@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 21:46:14 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/15 13:44:48 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/19 13:25:10 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,6 @@ int	ft_strcmp(const char *s1, const char *s2)
 		s2++;
 	}
 	return (*s1 - *s2);
-}
-
-t_env	*find_env(t_env *env, char *key)
-{
-	t_env	*cur;
-
-	cur = env;
-	while (!cur)
-	{
-		if (ft_strcmp(cur->value, key) == 0)
-			
-	}
 }
 
 t_env	*add_env(char *key)
@@ -52,11 +40,11 @@ t_env	*add_env(char *key)
 	return (new);
 }
 
-t_env	*set_add_env(t_env *env, char *key)
+t_env	*set_add_env(char *key)
 {
 	t_env *cur;
 
-	cur = env;
+	cur = g_global.env_lst;
 	if (!cur)
 	{
 		cur = add_env(key);
