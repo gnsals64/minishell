@@ -6,13 +6,13 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:50:40 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/19 13:29:09 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:10:40 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	ft_env(t_node *node)
+void	ft_env(t_argv *node)
 {
 	t_env	*cursor;
 

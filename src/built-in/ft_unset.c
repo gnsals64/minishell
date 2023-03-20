@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:48 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/19 13:31:27 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:11:09 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	free_first_env(t_env *tmp_env)
 	g_global.exit_code = 0;
 }
 
-void	ft_unset(t_node *node)
+void	ft_unset(t_argv *node)
 {
 	t_env	*tmp_env;
 	char	**str;

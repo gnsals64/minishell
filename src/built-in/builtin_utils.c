@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 21:46:14 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/19 14:37:04 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:08:42 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_env	*add_env(char *key)
 
 t_env	*set_add_env(char *key)
 {
-	t_env *cur;
+	t_env	*cur;
 
 	cur = g_global.env_lst;
 	if (!cur)

@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:50:59 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/19 13:22:29 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:10:35 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_n_option(char *arg)
 	return (0);
 }
 
-void	ft_echo(t_node *node)
+void	ft_echo(t_argv *node)
 {
 	int		n_option;
 	char	**arg;

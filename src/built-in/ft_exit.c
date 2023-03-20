@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:49:05 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/19 13:21:42 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:10:48 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_valid_exit_command(char *str)
 	return (1);
 }
 
-void	ft_exit(t_node *node)
+void	ft_exit(t_argv *node)
 {
 	int	exit_code;
 

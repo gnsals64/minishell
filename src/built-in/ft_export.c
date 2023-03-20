@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:22 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/19 13:21:17 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:10:54 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	double_free_arg(char **argument)
 	free(argument);
 }
 
-void	ft_export(t_node *node)
+void	ft_export(t_argv *node)
 {
 	t_env	*cur;
 	char	**argument;

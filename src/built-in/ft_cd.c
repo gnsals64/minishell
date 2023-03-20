@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:10 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/19 14:39:48 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:10:26 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	change_pwd_env(char *pwd)
 	}
 }
 
-void	ft_cd(t_node *node)
+void	ft_cd(t_argv *node)
 {
 	char	*path;
 	char	pwd[MAX_BUF];
