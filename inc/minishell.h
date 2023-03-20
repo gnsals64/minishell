@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/19 02:12:35 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/20 13:12:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,16 @@ void		argv_pipe(t_data *data, int *i);
 void		rm_quote(t_data *data);
 int			handle_double_quote(t_data *data, char *str);
 int			handle_single_quote(t_data *data, char *str);
+int			ft_envlen(char *str, t_state *state);
+char		*ft_find_env(char *str, t_data *data);
+int			ft_change_str_len(char *str, t_data *data);
+char		*ft_change_env_dup(char *str, t_data *data, int len, t_state *state);
+char		*ft_change_str(char *str, t_data *data);
+void		ft_change_env_cat(t_env_var *var, t_data *data, t_state *state, char *str);
 
 //--- utils ---
 int			ft_isspace(char c);
+char		*ft_strndup(char *str, int n);
 
 //--- env ---
 int			ft_env_creat(t_data *data, char *env);

@@ -61,6 +61,6 @@ void	lexer(char **line, t_data *data)
 			return ;
 		i++;
 	}
-	data->move = data->head;
 	rm_quote(data);
+	data->move = data->head;
 }

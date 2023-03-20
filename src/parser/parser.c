@@ -52,137 +52,6 @@ void	print_node(t_data *data)
 	}
 }
 
-char	*ft_strndup(char *str, int n)
-{
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	if (!str)
-		return (NULL);
-	tmp = (char *)malloc(sizeof(char) * (n + 1));
-	if (!tmp)
-		return (NULL);
-	while (i < n)
-	{
-		tmp[i] = str[i];
-		i++;
-	}
-	tmp[i] = '\0';
-	return (tmp);
-}
-
-int	ft_envlen(char *str, t_state *state)
-{
-	int	i;
-
-	i = 0;
-	while (*str != ' ' && *str != '\n')
-	{
-		if (*str == 0)
-			return (i);
-		if (state->double_quote == true && *str == '\"')
-			return (i);
-		i++;
-		str++;
-	}
-	return (i);
-}
-
-char	*ft_find_env(char *str, t_data *data)
-{
-	t_env	*cur;
-
-	cur = data->env_head;
-	while (cur != NULL)
-	{
-		if (ft_strncmp(str, cur->key, ft_strlen(str)) == 0)
-			return (cur->value);
-		cur = cur->next;
-	}
-	return (NULL);
-}
-
-int	ft_change_str_len(char *str, t_data *data)
-{
-	int		i;
-	int		len;
-	char	*tmp;
-	t_state	state;
-
-	i = 0;
-	len = 0;
-	while (ft_isspace(str[i]) == 1 && str[i])
-		i++;
-	ft_memset(&state, 0, sizeof(t_state));
-	while (str[i])
-	{
-		quote_state(str[i], &state);
-		if (str[i] == '$' && state.qoute == false)
-		{
-			tmp = ft_strndup(&str[i + 1], ft_envlen(&str[i + 1], &state));
-			i += ft_strlen(tmp) + 1;
-			len += ft_strlen(ft_find_env(tmp, data));
-			free(tmp);
-			continue ;
-		}
-		len++;
-		i++;
-	}
-	if (!quote_check(&state))
-		len = -1;
-	return (len);
-}
-
-void	ft_change_env_dup(char *str, char **change_str, t_data *data, t_state *state)
-{
-	int		i;
-	int		j;
-	char	*tmp;
-
-	i = 0;
-	j = 0;
-	while (ft_isspace(str[j]) == 1 && str[j])
-		j++;
-	while (str[j])
-	{
-		quote_state(str[j], state);
-		if (str[j] == '$' && state->qoute == false)
-		{
-			tmp = ft_strndup(&str[j + 1], ft_envlen(&str[j + 1], state));
-			j += ft_strlen(tmp) + 1;
-			*change_str = ft_strjoin(*change_str, ft_find_env(tmp, data));
-			i = ft_strlen(*change_str);
-			free(tmp);
-			continue ;
-		}
-		(*change_str)[i] = str[j];
-		i++;
-		j++;
-	}
-	(*change_str)[i] = '\0';
-}
-
-char	*ft_change_str(char *str, t_data *data)
-{
-	char	*tmp;
-	t_state	state;
-	int		len;
-
-	len = ft_change_str_len(str, data);
-	if (len == -1)
-	{
-		write(2, "close the quote\n", 16);
-		return (NULL);
-	}
-	tmp = ft_calloc(sizeof(char), len + 1);
-	if (!tmp)
-		return (NULL);
-	ft_memset(&state, 0, sizeof(t_state));
-	ft_change_env_dup(str, &tmp, data, &state);
-	return (tmp);
-}
-
 int	ft_parsing(char *str, t_data *data)
 {
 	char	**line;
@@ -194,6 +63,7 @@ int	ft_parsing(char *str, t_data *data)
 	if (!load_env)
 		return (-1);
 	line = ft_tokenizer(load_env);
+	free(load_env);
 	for (int j = 0; line[j] != NULL; j++)
 		printf("%s\n", line[j]);
 	if (!line)
@@ -203,6 +73,18 @@ int	ft_parsing(char *str, t_data *data)
 		free(line[i]);
 	free(line);
 	make_argv(data);
+	data->argv_cur = data->argv_head;
+	// for (; data->argv_cur != NULL; data->argv_cur = data->argv_cur->next)
+	// {
+	// 	for (int i = 0; data->argv_cur->cmd[i] != NULL; i++)
+	// 		printf("cmd[%d] = %s\n", i, data->argv_cur->cmd[i]);
+	// 	printf("\n");
+	// 	for (; data->argv_cur->dir_head != NULL; data->argv_cur->dir_head = data->argv_cur->dir_head->next)
+	// 	{
+	// 		printf("file name : %s, op : %s", data->argv_cur->dir_head->filename, data->argv_cur->dir_head->operator);
+	// 	}
+	// 	printf("\n");
+	// }
 	//print_node(data);
 	return (0);
 }

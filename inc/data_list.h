@@ -28,6 +28,13 @@ enum	e_token
 	DREDIR_OUT
 };
 
+typedef struct s_env_variable
+{
+	int		i;
+	int		j;
+	char	*change_str;
+}	t_env_var;
+
 typedef enum e_bool
 {
 	false,

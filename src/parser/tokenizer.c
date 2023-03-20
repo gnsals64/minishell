@@ -93,6 +93,8 @@ char	**ft_tokenizer(char *str)
 		return (NULL);
 	while (i < len)
 	{
+		while (ft_isspace(str[j]) == 1 && str[j] != '\0')
+			j++;
 		save[i] = ft_dup_line(str, &j);
 		// if (!save[i])
 		// 	ft_free_line(save, i);
