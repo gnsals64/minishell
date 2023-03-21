@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:22 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/20 16:10:54 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:30:41 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	**find_key_value(char *arg)
 		if (!result)
 		{
 			printf("malloc error\n");
-			return ;
+			return (NULL);
 		}
 		result[0] = ft_strdup(arg);
 		result[1] = NULL;
@@ -49,14 +49,14 @@ char	**find_key_value(char *arg)
 	if (!result)
 	{
 		printf("malloc error\n");
-		return ;
+		return (NULL);
 	}
 	i = ft_strchr(arg, '=') - arg;
-	result[0] = (char *)mallog(sizeof(char) * i + 1);
+	result[0] = (char *)malloc(sizeof(char) * i + 1);
 	if (!result[0])
 	{
 		printf("malloc error\n");
-		return ;
+		return (NULL);
 	}
 	ft_strlcpy(result[0], arg, i + 1);
 	result[1] = ft_strdup(arg + i + 1);
@@ -123,6 +123,6 @@ void	ft_export(t_argv *node)
 				cur->value = ft_strdup(argument[1]);
 			}
 		}
-		double_free_env(argument);
+		double_free_arg(argument);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 21:46:14 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/20 16:08:42 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:21:32 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_env	*add_env(char *key)
 	if (!new)
 	{
 		printf("malloc error\n");
-		return ;
+		return (NULL);
 	}
 	new->key = ft_strdup(key);
 	new->value = NULL;

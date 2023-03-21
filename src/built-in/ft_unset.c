@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:48 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/20 16:11:09 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:32:15 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void	ft_unset(t_argv *node)
 	t_env	*tmp_env;
 	char	**str;
 
-	str = node->cmd[1];
+	str = &node->cmd[1];
 	while (*str && g_global.env_lst)
 	{
 		tmp_env = g_global.env_lst;
-		if (tmp_env && ft_strcmp(tmp_env->key, *node->cmd[1]) == 0)
+		if (tmp_env && ft_strcmp(tmp_env->key, node->cmd[1]) == 0)
 			free_first_env(tmp_env);
 		else
 		{

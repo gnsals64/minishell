@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 16:53:19 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 17:26:30 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:15:06 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	single_builtin()
-{
-	
-}
+// int	single_builtin()
+// {
 
-int	run_builtin()
-{
-	
-}
+// }
+
+// int	run_builtin()
+// {
+
+// }
 
 int	is_builtin(char *cmd)
 {

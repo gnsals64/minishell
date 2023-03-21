@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:49:05 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 13:27:01 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:29:16 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	ft_exit(t_argv *node)
 		g_global.exit_code = 1;
 		return ;
 	}
-	exit_code = ft_atoi(*(node->cmd[1]));
+	exit_code = ft_atoi(node->cmd[1]);
 	exit(exit_code);
 }

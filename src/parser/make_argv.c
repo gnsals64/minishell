@@ -34,7 +34,7 @@ void	ft_merge_data(t_data *data, int *i)
 	{
 		data->argv_head = (t_argv *)malloc(sizeof(t_argv));
 		if (!data->argv_head)
-			ft_exit(data);
+			ft_exit_parsing_error(data);
 		ft_memset(data->argv_head, 0, sizeof(t_argv));
 		data->argv_cur = data->argv_head;
 		while (ft_creat_argv(data, i) != -1)
@@ -43,7 +43,7 @@ void	ft_merge_data(t_data *data, int *i)
 	}
 	data->argv_cur->next = (t_argv *)malloc(sizeof(t_argv));
 	if (!data->argv_cur->next)
-		ft_exit(data);
+		ft_exit_parsing_error(data);
 	ft_memset(data->argv_cur->next, 0, sizeof(t_argv));
 	data->argv_cur = data->argv_cur->next;
 	while (ft_creat_argv(data, i) != -1)

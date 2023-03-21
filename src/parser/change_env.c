@@ -29,7 +29,7 @@ int	ft_change_str_len(char *str, t_data *data)
 		{
 			tmp = ft_strndup(&str[i + 1], ft_envlen(&str[i + 1], &state));
 			if (!tmp)
-				ft_exit(data);
+				ft_exit_parsing_error(data);
 			i += ft_strlen(tmp) + 1;
 			len += ft_strlen(ft_find_env(tmp, data));
 			free(tmp);
@@ -47,7 +47,7 @@ void	env_cat(t_env_var *var, t_data *data, t_state *state, char *str)
 
 	tmp = ft_strndup(&str[var->j + 1], ft_envlen(&str[var->j + 1], state));
 	if (!tmp)
-		ft_exit(data);
+		ft_exit_parsing_error(data);
 	var->j += ft_strlen(tmp) + 1;
 	ft_strlcat(var->change_str, ft_find_env(tmp, data),
 		ft_strlen(var->change_str) + ft_strlen(ft_find_env(tmp, data)) + 1);
@@ -62,7 +62,7 @@ char	*change_env_dup(char *str, t_data *data, int len, t_state *state)
 	ft_memset(&var, 0, sizeof(t_env_var));
 	var.change_str = calloc(sizeof(char), len + 1);
 	if (!var.change_str)
-		ft_exit(data);
+		ft_exit_parsing_error(data);
 	while (str[var.j])
 	{
 		quote_state(str[var.j], state);

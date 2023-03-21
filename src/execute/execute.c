@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:52:07 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 17:18:08 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:32:48 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,15 @@ void	single_process(t_argv *node)
 	int	tmp_stdin_fd;
 	int	tmp_stdout_fd;
 
+	(void)node;
 	tmp_stdin_fd = dup(STDIN_FILENO);
 	tmp_stdout_fd = dup(STDOUT_FILENO);
-	if (is_builtin(node->cmd[0]) && !node->next)
-		single_builtin(node);
-	else if (node)
-		ft_fork(node, 0);
-	else if (!node)
-		ft_redirect(node->dir_head);
+	// if (is_builtin(node->cmd[0]) && !node->next)
+	// 	single_builtin(node);
+	// else if (node)
+	// 	ft_fork(node, 0);
+	// else if (!node)
+		// ft_redirect(node->dir_head);
 	dup2(tmp_stdin_fd, STDIN_FILENO);
 	dup2(tmp_stdout_fd, STDOUT_FILENO);
 }

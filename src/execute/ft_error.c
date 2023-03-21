@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:42:30 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 16:52:41 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:33:02 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_error(char *s, int exit_code)
 {
-	write(2, s, ft_strlne(s));
+	write(2, s, ft_strlen(s));
 	write(2, "\n", 1);
 	exit(exit_code);
 }

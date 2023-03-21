@@ -90,6 +90,14 @@ typedef struct s_data
 	t_argv			*argv_cur;
 }	t_data;
 
+typedef struct s_info
+{
+	struct s_env	*env_lst;
+	int				exit_code;
+}	t_info;
+
+extern t_info	g_global;
+
 enum e_token	type;
 
 #endif

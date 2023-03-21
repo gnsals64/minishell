@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:50:59 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 17:27:28 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:24:57 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_echo(t_argv *node)
 	int		n_option;
 	char	**arg;
 
-	arg = *node->cmd[1];
+	arg = &node->cmd[1];
 	n_option = 0;
 	if (arg)
 	{

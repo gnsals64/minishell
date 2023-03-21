@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:32:12 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/17 20:31:57 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/21 19:28:26 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	run_program(t_data *data)
 		line = readline("input> ");
 		if (ft_parsing(line, data) == 0)
 		{
+			execute(data->argv_cur);
 			printf("ouput> %s\n", line);
 			add_history(line);
 			free(line);

@@ -90,7 +90,7 @@ void	ft_free_line(char **save, t_data *data)
 		i++;
 	}
 	free(save);
-	ft_exit(data);
+	ft_exit_parsing_error(data);
 }
 
 char	**ft_tokenizer(char *str, t_data *data)
@@ -105,7 +105,7 @@ char	**ft_tokenizer(char *str, t_data *data)
 	len = find_split_len(str);
 	save = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!save)
-		ft_exit(data);
+		ft_exit_parsing_error(data);
 	while (i < len)
 	{
 		while (ft_isspace(str[j]) == 1 && str[j] != '\0')

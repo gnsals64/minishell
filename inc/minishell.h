@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/21 18:25:08 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:37:57 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,13 @@ void		ft_free_all(t_data *data);
 void		ft_env_free(t_data *data);
 
 //--- exit ---
-void		ft_exit(t_data *data);
+void		ft_exit_parsing_error(t_data *data);
 
 //--- main ---
 t_data		*ft_init(char **env);
 void		run_program(t_data *data);
 void		handler(int signum);
+
+
 
 #endif
