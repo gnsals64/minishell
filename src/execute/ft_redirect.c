@@ -1,32 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_redirect.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 14:50:40 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 13:26:49 by sooyang          ###   ########.fr       */
+/*   Created: 2023/03/21 15:33:27 by sooyang           #+#    #+#             */
+/*   Updated: 2023/03/21 17:19:52 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
-
-void	ft_env(t_argv *node)
-{
-	t_env	*cursor;
-
-	if (node->cmd[1])
-	{
-		printf("env: {%s}: No such file or directory\n", node->cmd[1]);
-		g_global.exit_code = 127;
-		return ;
-	}
-	cursor = g_global.env_lst;
-	while (cursor != NULL)
-	{
-		printf("%s=%s\n", cursor->key, cursor->value);
-		cursor = cursor->next;
-	}
-	g_global.exit_code = 0;
-}
