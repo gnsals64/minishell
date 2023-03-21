@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:10 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/20 16:10:26 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/21 20:32:38 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	change_pwd_env(char *pwd)
 
 	pwd_env = find_add_env("PWD");
 	old_pwd_env = find_add_env("OLDPWD");
-	if (pwd_env)
+	if (old_pwd_env->value)
+		free(old_pwd_env->value);
+	old_pwd_env->value = pwd_env->value;
+	if (pwd)
 		pwd_env->value = ft_strdup(pwd);
 	else
 		pwd_env->value = ft_strdup("");

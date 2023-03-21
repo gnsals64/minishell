@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:50:59 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 19:24:57 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/21 20:30:16 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int	check_n_option(char *arg)
 {
-	int	i;
-
-	i = 0;
 	if (!arg)
 		return (0);
 	if (*arg == '-')
