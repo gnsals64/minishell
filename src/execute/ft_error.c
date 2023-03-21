@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 14:50:40 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 13:26:49 by sooyang          ###   ########.fr       */
+/*   Created: 2023/03/21 15:42:30 by sooyang           #+#    #+#             */
+/*   Updated: 2023/03/21 16:52:41 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	ft_env(t_argv *node)
+void	ft_error(char *s, int exit_code)
 {
-	t_env	*cursor;
-
-	if (node->cmd[1])
-	{
-		printf("env: {%s}: No such file or directory\n", node->cmd[1]);
-		g_global.exit_code = 127;
-		return ;
-	}
-	cursor = g_global.env_lst;
-	while (cursor != NULL)
-	{
-		printf("%s=%s\n", cursor->key, cursor->value);
-		cursor = cursor->next;
-	}
-	g_global.exit_code = 0;
+	write(2, s, ft_strlne(s));
+	write(2, "\n", 1);
+	exit(exit_code);
 }

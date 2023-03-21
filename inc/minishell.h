@@ -20,6 +20,7 @@
 # include <readline/history.h>
 # include <signal.h>
 # include "data_list.h"
+# include "execute.h"
 # include "../src/libft/libft.h"
 
 //--- parser ---
