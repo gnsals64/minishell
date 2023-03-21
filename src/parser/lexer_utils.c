@@ -24,6 +24,7 @@ t_node	*ft_lst_new(char type, char *s)
 	if (!(node->str))
 		return (NULL);
 	node->next = NULL;
+	node->prev = NULL;
 	return (node);
 }
 

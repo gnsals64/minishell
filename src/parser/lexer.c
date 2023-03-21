@@ -23,6 +23,7 @@ int	ft_save_node(char *tmp, char type, t_data *data)
 		return (0);
 	}
 	data->move->next = ft_lst_new(type, tmp);
+	data->move->next->prev = data->move;
 	data->move = data->move->next;
 	return (0);
 }

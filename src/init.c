@@ -15,12 +15,19 @@
 t_data	*ft_init(char **env)
 {
 	t_data	*data;
+	int		i;
 
+	i = 0;
 	data = (t_data *)malloc(sizeof(t_data));
 	if (!data)
 		return (NULL);
 	ft_memset(data, 0, sizeof(data));
-	data->env = env;
+	while (env[i] != NULL)
+	{
+		if (ft_env_creat(data, env[i]) == -1)
+			exit(1);
+		i++;
+	}
 	signal(SIGINT, handler);
 	return (data);
 }
