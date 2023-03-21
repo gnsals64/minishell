@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef DATA_LIST_H
-#define DATA_LIST_H
+#ifndef DATA_LIST_H
+# define DATA_LIST_H
 
 enum	e_token
 {
@@ -27,6 +27,13 @@ enum	e_token
 	HERE_DOC,
 	DREDIR_OUT
 };
+
+typedef struct s_env_variable
+{
+	int		i;
+	int		j;
+	char	*change_str;
+}	t_env_var;
 
 typedef enum e_bool
 {

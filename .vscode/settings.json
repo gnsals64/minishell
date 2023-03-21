@@ -4,7 +4,8 @@
 		"data_list.h": "c",
 		"libft.h": "c",
 		"stdlib.h": "c",
-		"signal.h": "c"
+		"signal.h": "c",
+		"sstream": "c"
 	},
 	"C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
 }

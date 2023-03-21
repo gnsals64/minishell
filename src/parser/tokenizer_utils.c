@@ -12,7 +12,7 @@
 
 #include "../../inc/minishell.h"
 
-void	quote_state(char c, t_state *state)
+int	quote_state(char c, t_state *state)
 {
 	if (c == DOUBLE_QUOTE && state->qoute == false)
 	{
@@ -20,6 +20,7 @@ void	quote_state(char c, t_state *state)
 			state->double_quote = false;
 		else
 			state->double_quote = true;
+		return (1);
 	}
 	if (c == QOUTE && state->double_quote == false)
 	{
@@ -27,7 +28,9 @@ void	quote_state(char c, t_state *state)
 			state->qoute = false;
 		else
 			state->qoute = true;
+		return (1);
 	}
+	return (0);
 }
 
 t_bool	quote_check(t_state *state)

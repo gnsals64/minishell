@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 11:01:48 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/15 23:49:14 by marvin           ###   ########.fr       */
+/*   Created: 2023/03/21 16:57:46 by hunpark           #+#    #+#             */
+/*   Updated: 2023/03/21 18:37:07 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/minishell.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_exit(t_data *data)
 {
-	int	a;
-
-	a = 0;
-	if (!s)
-		return (0);
-	while (*s++)
-		a++;
-	return (a);
+	while (data->env_head != NULL)
+		ft_env_free(data);
+	ft_free_all(data);
+	exit(1);
 }

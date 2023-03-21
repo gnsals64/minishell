@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:32:12 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/02 17:08:31 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/17 20:31:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	run_program(t_data *data)
 			printf("ouput> %s\n", line);
 			add_history(line);
 			free(line);
+			ft_free_all(data);
 			line = NULL;
 		}
 		else

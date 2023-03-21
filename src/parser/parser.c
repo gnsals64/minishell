@@ -55,13 +55,36 @@ void	print_node(t_data *data)
 int	ft_parsing(char *str, t_data *data)
 {
 	char	**line;
+	int		i;
+	char	*load_env;
 
-	line = ft_tokenizer(str);
+	i = -1;
+	load_env = ft_change_str(str, data);
+	if (!load_env)
+		return (-1);
+	line = ft_tokenizer(load_env, data);
+	free(load_env);
+	for (int j = 0; line[j] != NULL; j++)
+		printf("%s\n", line[j]);
 	if (!line)
 		return (-1);
 	lexer(line, data);
-	data->move = data->head;
+	while (line[++i])
+		free(line[i]);
+	free(line);
 	make_argv(data);
+	data->argv_cur = data->argv_head;
+	// for (; data->argv_cur != NULL; data->argv_cur = data->argv_cur->next)
+	// {
+	// 	for (int i = 0; data->argv_cur->cmd[i] != NULL; i++)
+	// 		printf("cmd[%d] = %s\n", i, data->argv_cur->cmd[i]);
+	// 	printf("\n");
+	// 	for (; data->argv_cur->dir_head != NULL; data->argv_cur->dir_head = data->argv_cur->dir_head->next)
+	// 	{
+	// 		printf("file name : %s, op : %s", data->argv_cur->dir_head->filename, data->argv_cur->dir_head->operator);
+	// 	}
+	// 	printf("\n");
+	// }
 	//print_node(data);
 	return (0);
 }
