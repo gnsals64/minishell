@@ -28,6 +28,8 @@ int	ft_change_str_len(char *str, t_data *data)
 		if (str[i] == '$' && state.qoute == false)
 		{
 			tmp = ft_strndup(&str[i + 1], ft_envlen(&str[i + 1], &state));
+			if (!tmp)
+				ft_exit(data);
 			i += ft_strlen(tmp) + 1;
 			len += ft_strlen(ft_find_env(tmp, data));
 			free(tmp);
@@ -36,43 +38,45 @@ int	ft_change_str_len(char *str, t_data *data)
 		len++;
 		i++;
 	}
-	if (!quote_check(&state))
-		len = -1;
 	return (len);
 }
 
-void	ft_change_env_cat(t_env_var *var, t_data *data, t_state *state, char *str)
+void	env_cat(t_env_var *var, t_data *data, t_state *state, char *str)
 {
 	char	*tmp;
 
 	tmp = ft_strndup(&str[var->j + 1], ft_envlen(&str[var->j + 1], state));
+	if (!tmp)
+		ft_exit(data);
 	var->j += ft_strlen(tmp) + 1;
-	ft_strlcat(var->change_str, ft_find_env(tmp, data), ft_strlen(var->change_str)
-		+ ft_strlen(ft_find_env(tmp, data)) + 1);
+	ft_strlcat(var->change_str, ft_find_env(tmp, data),
+		ft_strlen(var->change_str) + ft_strlen(ft_find_env(tmp, data)) + 1);
 	var->i = ft_strlen(var->change_str);
 	free(tmp);
 }
 
-char	*ft_change_env_dup(char *str, t_data *data, int len, t_state *state)
+char	*change_env_dup(char *str, t_data *data, int len, t_state *state)
 {
 	t_env_var	var;
 
 	ft_memset(&var, 0, sizeof(t_env_var));
 	var.change_str = calloc(sizeof(char), len + 1);
 	if (!var.change_str)
-		return (NULL);
+		ft_exit(data);
 	while (str[var.j])
 	{
 		quote_state(str[var.j], state);
 		if (str[var.j] == '$' && state->qoute == false)
 		{
-			ft_change_env_cat(&var, data, state, str);
+			env_cat(&var, data, state, str);
 			continue ;
 		}
 		var.change_str[var.i] = str[var.j];
 		var.i++;
 		var.j++;
 	}
+	if (!quote_check(state))
+		return (NULL);
 	return (var.change_str);
 }
 
@@ -91,7 +95,6 @@ char	*ft_change_str(char *str, t_data *data)
 	while (ft_isspace(*str) == 1 && *str != '\0')
 		str++;
 	ft_memset(&state, 0, sizeof(t_state));
-	change_str = ft_change_env_dup(str, data, len, &state);
+	change_str = change_env_dup(str, data, len, &state);
 	return (change_str);
 }
-

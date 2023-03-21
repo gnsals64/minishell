@@ -14,7 +14,8 @@
 
 int	ft_isspace(char c)
 {
-	return (c == '\n' || c == ' ' || c == '\t' || c == '\v' || c == '\f' || c == '\r');
+	return (c == '\n' || c == ' ' || c == '\t' || c == '\v'
+		|| c == '\f' || c == '\r');
 }
 
 char	*ft_strndup(char *str, int n)

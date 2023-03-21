@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/20 13:12:14 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/21 18:25:08 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int			quote_state(char c, t_state *state);
 int			find_split_len(char *str);
 t_bool		quote_check(t_state *state);
 char		*ft_dup_line(char *str, int *index);
-char		**ft_tokenizer(char *str);
+char		**ft_tokenizer(char *str, t_data *data);
+void		ft_free_line(char **save, t_data *data);
 char		ft_isspecial(char c);
 t_node		*ft_lst_new(char type, char *line);
 char		ft_find_special(char c1, char c2);
@@ -50,9 +51,9 @@ int			handle_single_quote(t_data *data, char *str);
 int			ft_envlen(char *str, t_state *state);
 char		*ft_find_env(char *str, t_data *data);
 int			ft_change_str_len(char *str, t_data *data);
-char		*ft_change_env_dup(char *str, t_data *data, int len, t_state *state);
+char		*change_env_dup(char *str, t_data *data, int len, t_state *state);
 char		*ft_change_str(char *str, t_data *data);
-void		ft_change_env_cat(t_env_var *var, t_data *data, t_state *state, char *str);
+void		env_cat(t_env_var *var, t_data *data, t_state *state, char *str);
 
 //--- utils ---
 int			ft_isspace(char c);
@@ -67,6 +68,10 @@ void		ft_token_free(t_data *data);
 void		ft_dir_free(t_data *data);
 void		ft_argv_free(t_data *data);
 void		ft_free_all(t_data *data);
+void		ft_env_free(t_data *data);
+
+//--- exit ---
+void		ft_exit(t_data *data);
 
 //--- main ---
 t_data		*ft_init(char **env);

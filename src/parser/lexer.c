@@ -58,7 +58,7 @@ void	lexer(char **line, t_data *data)
 	while (line[i] != NULL)
 	{
 		if (ft_creat_node(line[i], data) == -1)
-			return ;
+			ft_free_line(line, data);
 		i++;
 	}
 	rm_quote(data);

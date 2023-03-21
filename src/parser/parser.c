@@ -62,7 +62,7 @@ int	ft_parsing(char *str, t_data *data)
 	load_env = ft_change_str(str, data);
 	if (!load_env)
 		return (-1);
-	line = ft_tokenizer(load_env);
+	line = ft_tokenizer(load_env, data);
 	free(load_env);
 	for (int j = 0; line[j] != NULL; j++)
 		printf("%s\n", line[j]);

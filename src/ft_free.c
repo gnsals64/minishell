@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:04:39 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/10 18:54:57 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/21 18:36:58 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,23 @@ void	ft_argv_free(t_data *data)
 	data->argv_head = data->argv_head->next;
 	tmp->next = NULL;
 	free(tmp);
+	tmp = NULL;
+}
+
+void	ft_env_free(t_data *data)
+{
+	t_env	*tmp;
+
+	tmp = data->env_head;
+	data->env_head = data->env_head->next;
+	tmp->prev = NULL;
+	tmp->next = NULL;
+	free(tmp->key);
+	free(tmp->value);
+	tmp->key = NULL;
+	tmp->value = NULL;
+	free(tmp);
+	tmp = NULL;
 }
 
 void	ft_free_all(t_data *data)

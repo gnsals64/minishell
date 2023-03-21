@@ -78,7 +78,22 @@ char	*ft_dup_line(char *str, int *index)
 	return (tmp);
 }
 
-char	**ft_tokenizer(char *str)
+void	ft_free_line(char **save, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (save[i] != NULL)
+	{
+		if (!save[i])
+			free(save[i]);
+		i++;
+	}
+	free(save);
+	ft_exit(data);
+}
+
+char	**ft_tokenizer(char *str, t_data *data)
 {
 	char	**save;
 	int		len;
@@ -90,14 +105,14 @@ char	**ft_tokenizer(char *str)
 	len = find_split_len(str);
 	save = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!save)
-		return (NULL);
+		ft_exit(data);
 	while (i < len)
 	{
 		while (ft_isspace(str[j]) == 1 && str[j] != '\0')
 			j++;
 		save[i] = ft_dup_line(str, &j);
-		// if (!save[i])
-		// 	ft_free_line(save, i);
+		if (!save[i])
+			ft_free_line(save, data);
 		i++;
 	}
 	save[len] = NULL;

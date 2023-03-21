@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef DATA_LIST_H
-#define DATA_LIST_H
+#ifndef DATA_LIST_H
+# define DATA_LIST_H
 
 enum	e_token
 {
