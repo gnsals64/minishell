@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:32:12 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/21 19:28:26 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/21 20:33:49 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
+
+t_info	g_global;
 
 void	run_program(t_data *data)
 {
