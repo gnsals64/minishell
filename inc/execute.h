@@ -6,14 +6,13 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:14:19 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/22 16:55:50 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/22 20:16:02 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTE_H
 # define EXECUTE_H
 # define MAX_BUF 4096
-# include <sys/stat.h>
 
 //builtin_utils.c
 int		ft_strcmp(const char *s1, const char *s2);

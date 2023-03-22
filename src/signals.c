@@ -16,8 +16,25 @@ void	handler(int signum)
 {
 	if (signum != SIGINT)
 		return ;
-	printf("ctrl + c\n");
+	rl_replace_line("", 0);
+	printf("\n");
 	rl_on_new_line();
-	rl_replace_line("", 1);
 	rl_redisplay();
+}
+
+void	handler_q(int signum)
+{
+	if (signum != SIGQUIT)
+		return ;
+	rl_on_new_line();
+	rl_redisplay();
+}
+
+void	handle_terminal(void)
+{
+	struct termios	term;
+
+	tcgetattr(STDIN_FILENO, &term);
+	term.c_lflag &= ~(ECHOCTL);
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 }
