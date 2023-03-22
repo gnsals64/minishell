@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:33:29 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 19:33:15 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/22 17:19:59 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ void	wait_process(int pipe_cnt)
 
 void	child_process(t_argv *node, int i, int pipe_cnt, int pipes[2][2])
 {
-	(void)node;
 	close(pipes[0][0]);
-	if (pipe_cnt != 0 && i != pipe_cnt)
+	if (pipe_cnt && i != pipe_cnt)
 	{
-		dup2(pipes[0][0], STDOUT_FILENO);
+		dup2(pipes[0][1], STDOUT_FILENO);
 		close(pipes[0][1]);
 	}
 	if (i != 0)
@@ -36,15 +35,15 @@ void	child_process(t_argv *node, int i, int pipe_cnt, int pipes[2][2])
 		dup2(pipes[1][0], STDIN_FILENO);
 		close(pipes[1][0]);
 	}
-	// if (node->dir_head)
-	// {
-		// if (ft_redirect(node->dir_head))
-			// exit (1);
-	// }
-	// if (is_builtin(node->cmd[0]))
-		// run_builtin();
-	// else
-		// ft_exe(node, g_global.env_lst);
+	//if (node->dir_head)
+	//{
+	//	if (ft_redirect(node->dir_head))
+	//		exit (1);
+	//}
+	if (is_builtin(node->cmd[0]))
+		run_builtin(node);
+	else
+		ft_execute(node);
 	exit (0);
 }
 

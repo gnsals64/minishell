@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 21:46:14 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 19:21:32 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/22 16:04:02 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,16 @@ t_env	*set_add_env(char *key)
 		cur = cur->next;
 	}
 	return (cur);
+}
+
+t_env	*find_env(char *key)
+{
+	t_env	*tmp;
+
+	tmp = g_global.env_lst;
+	while (tmp && ft_strcmp(tmp->key, key))
+		tmp = tmp->next;
+	if (!tmp)
+		return (0);
+	return (tmp);
 }

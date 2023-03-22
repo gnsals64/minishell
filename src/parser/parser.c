@@ -64,8 +64,8 @@ int	ft_parsing(char *str, t_data *data)
 		return (-1);
 	line = ft_tokenizer(load_env, data);
 	free(load_env);
-	for (int j = 0; line[j] != NULL; j++)
-		printf("%s\n", line[j]);
+	//for (int j = 0; line[j] != NULL; j++)
+	//	printf("%s\n", line[j]);
 	if (!line)
 		return (-1);
 	lexer(line, data);

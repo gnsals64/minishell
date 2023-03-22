@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_strjoin2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 15:42:30 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/22 01:35:00 by sooyang          ###   ########.fr       */
+/*   Created: 2023/03/22 16:55:06 by sooyang           #+#    #+#             */
+/*   Updated: 2023/03/22 16:55:27 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	ft_cmd_error(char *s)
+char	*ft_strjoin2(char const *s1, char const *s2)
 {
-	if (s != 0 && *s != 0)
-		ft_putstr_fd(s, 2);
-	ft_putstr_fd(": command not found\n", 2);
-	g_global.exit_code = 127;
-	exit (127);
-}
+	char	*ans;
+	size_t	i;
+	size_t	j;
 
-void	ft_error(char *s, int exit_code)
-{
-	write(2, s, ft_strlen(s));
-	write(2, "\n", 1);
-	exit(exit_code);
+	if (s1 == 0 || s2 == 0)
+		return (0);
+	ans = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (ans == 0)
+		return (0);
+	i = 0;
+	while (i < ft_strlen(s1))
+	{
+		ans[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (j < ft_strlen(s2))
+	{
+		ans[i + j] = s2[j];
+		j++;
+	}
+	ans[i + j] = 0;
+	return (ans);
 }

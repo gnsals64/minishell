@@ -3,24 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 16:53:19 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 19:15:06 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/22 15:08:00 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-// int	single_builtin()
-// {
+void	single_builtin(t_argv *node)
+{
+	//if (ft_redirect(node->dir))
+	//	return ;
+	run_builtin(node);
+}
 
-// }
+int	run_builtin(t_argv *node)
+{
+	char	*cmd;
 
-// int	run_builtin()
-// {
-
-// }
+	cmd = node->cmd[0];
+	if (ft_strcmp(cmd, "cd") == 0)
+		ft_cd(node);
+	if (ft_strcmp(cmd, "echo") == 0)
+		ft_echo(node);
+	if (ft_strcmp(cmd, "env") == 0)
+		ft_env(node);
+	if (ft_strcmp(cmd, "exit") == 0)
+		ft_exit(node);
+	if (ft_strcmp(cmd, "export") == 0)
+		ft_export(node);
+	if (ft_strcmp(cmd, "pwd") == 0)
+		ft_pwd();
+	if (ft_strcmp(cmd, "unset") == 0)
+		ft_unset(node);
+	return (0);
+}
 
 int	is_builtin(char *cmd)
 {
