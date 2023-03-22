@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:52:07 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 19:32:48 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/22 17:16:17 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	single_process(t_argv *node)
 	(void)node;
 	tmp_stdin_fd = dup(STDIN_FILENO);
 	tmp_stdout_fd = dup(STDOUT_FILENO);
-	// if (is_builtin(node->cmd[0]) && !node->next)
-	// 	single_builtin(node);
-	// else if (node)
-	// 	ft_fork(node, 0);
-	// else if (!node)
-		// ft_redirect(node->dir_head);
+	if (is_builtin(node->cmd[0]) && !node->next)
+		single_builtin(node);
+	else if (node)
+		ft_fork(node, 0);
+	//else if (!node)
+	//	ft_redirect(node->dir_head);
 	dup2(tmp_stdin_fd, STDIN_FILENO);
 	dup2(tmp_stdout_fd, STDOUT_FILENO);
 }

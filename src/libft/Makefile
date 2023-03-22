@@ -27,13 +27,13 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAG) -c $< -o $@ -I .
+	@$(CC) $(CFLAG) -c $< -o $@ -I .
 
 $(NAME) : $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+	@$(AR) $(NAME) $(OBJS)
 
 clean :
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 fclean : clean
 	$(RM) $(NAME)
