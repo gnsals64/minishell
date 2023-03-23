@@ -16,7 +16,7 @@ void	handler(int signum)
 {
 	if (signum != SIGINT)
 		return ;
-	rl_replace_line("", 0);
+	rl_replace_line("", 1);
 	printf("\n");
 	rl_on_new_line();
 	rl_redisplay();

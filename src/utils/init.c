@@ -29,6 +29,6 @@ t_data	*ft_init(char **env)
 		i++;
 	}
 	g_global.env_lst = data->env_head;
-	signal(SIGINT, handler);
+	
 	return (data);
 }
