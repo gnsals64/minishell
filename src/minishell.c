@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:32:12 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/23 14:22:24 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/24 01:44:06 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	run_program(t_data *data)
 		signal(SIGQUIT, handler_q);
 		line = readline("minishell$ ");
 		if (line == NULL)
+		{
+			g_global.exit_code = 0;
 			exit (0);
+		}
 		if (ft_parsing(line, data) == 0)
 		{
 			execute(data->argv_cur);

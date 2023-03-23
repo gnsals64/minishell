@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:14:19 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/22 20:16:02 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/24 01:38:33 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	ft_error(char *s, int exit_code);
 void	ft_cmd_error(char *s);
 //ft_execute
 void	ft_execute(t_argv *node);
+//ft_redirect
+int		ft_redirect(t_redirect *redir);
 //arr_converter
 char	**arr_converter(void);
 char	*ft_strjoin2(char const *s1, char const *s2);

@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:33:29 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/22 17:19:59 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/24 01:08:00 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void	child_process(t_argv *node, int i, int pipe_cnt, int pipes[2][2])
 		dup2(pipes[1][0], STDIN_FILENO);
 		close(pipes[1][0]);
 	}
-	//if (node->dir_head)
-	//{
-	//	if (ft_redirect(node->dir_head))
-	//		exit (1);
-	//}
+	if (node->dir_head)
+	{
+		if (ft_redirect(node->dir_head))
+			exit (1);
+	}
 	if (is_builtin(node->cmd[0]))
 		run_builtin(node);
 	else
