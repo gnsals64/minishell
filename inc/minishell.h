@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/22 20:19:00 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/24 01:10:14 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <signal.h>
 # include <termios.h>
 # include <sys/stat.h>
+# include <fcntl.h>
 # include "data_list.h"
 # include "execute.h"
 # include "../src/libft/libft.h"

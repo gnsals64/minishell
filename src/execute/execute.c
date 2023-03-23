@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:52:07 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/22 17:16:17 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/24 00:53:28 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	single_process(t_argv *node)
 	int	tmp_stdin_fd;
 	int	tmp_stdout_fd;
 
-	(void)node;
 	tmp_stdin_fd = dup(STDIN_FILENO);
 	tmp_stdout_fd = dup(STDOUT_FILENO);
 	if (is_builtin(node->cmd[0]) && !node->next)
