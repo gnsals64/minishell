@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:32:12 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/22 18:14:21 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/23 14:22:24 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@ void	run_program(t_data *data)
 
 	while (1)
 	{
-		line = readline("input> ");
+		handle_terminal();
+		signal(SIGINT, handler);
+		signal(SIGQUIT, handler_q);
+		line = readline("minishell$ ");
+		if (line == NULL)
+			exit (0);
 		if (ft_parsing(line, data) == 0)
 		{
 			execute(data->argv_cur);
-			//printf("%s\n", line);
 			add_history(line);
 			free(line);
 			ft_free_all(data);
