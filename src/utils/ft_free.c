@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:04:39 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/21 19:28:25 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/25 01:35:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ void	ft_argv_free(t_data *data)
 
 	i = -1;
 	tmp = data->argv_head;
-	while (tmp->cmd[++i])
-		free(tmp->cmd[i]);
+	if (!tmp->cmd)
+	{
+		while (tmp->cmd[++i])
+			free(tmp->cmd[i]);
+	}
 	free(tmp->cmd);
 	tmp->cmd = NULL;
 	while (tmp->dir_head != NULL)
