@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hunaprk <hunaprk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:04:39 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/25 01:35:53 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/25 01:53:03 by hunaprk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_argv_free(t_data *data)
 
 	i = -1;
 	tmp = data->argv_head;
-	if (!tmp->cmd)
+	if (tmp->cmd)
 	{
 		while (tmp->cmd[++i])
 			free(tmp->cmd[i]);
@@ -70,7 +70,6 @@ void	ft_env_free(t_data *data)
 
 	tmp = data->env_head;
 	data->env_head = data->env_head->next;
-	tmp->prev = NULL;
 	tmp->next = NULL;
 	free(tmp->key);
 	free(tmp->value);

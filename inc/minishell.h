@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hunaprk <hunaprk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/24 01:10:14 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/25 01:39:52 by hunaprk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <signal.h>
 # include <termios.h>
 # include <sys/stat.h>
+# include <sys/wait.h>
 # include <fcntl.h>
 # include "data_list.h"
 # include "execute.h"

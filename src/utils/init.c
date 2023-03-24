@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hunaprk <hunaprk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:30:36 by marvin            #+#    #+#             */
-/*   Updated: 2023/03/24 16:28:36 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/25 01:40:06 by hunaprk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_data	*ft_init(char **env)
 	ft_memset(data, 0, sizeof(data));
 	while (env[i] != NULL)
 	{
-		ft_env_creat(data, env[i])
+		ft_env_creat(data, env[i]);
 		i++;
 	}
 	g_global.env_lst = data->env_head;

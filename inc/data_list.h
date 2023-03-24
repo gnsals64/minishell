@@ -52,7 +52,6 @@ typedef struct s_env
 	char			*key;
 	char			*value;
 	struct s_env	*next;
-	struct s_env	*prev;
 }	t_env;
 
 typedef struct s_redirect
@@ -98,6 +97,5 @@ typedef struct s_info
 
 extern t_info	g_global;
 
-enum e_token	type;
 
 #endif
