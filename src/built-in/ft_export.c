@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:22 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/22 17:22:10 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/25 00:34:21 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	ft_export(t_argv *node)
 		return ;
 	}
 	i = 0;
-	while (node->cmd[++i])
+	while (node->cmd[i])
 	{
 		argument = find_key_value(node->cmd[i]);
 		if (is_valid_name(argument[0], node->cmd[i]))
@@ -124,5 +124,6 @@ void	ft_export(t_argv *node)
 			}
 		}
 		double_free_arg(argument);
+		i++;
 	}
 }
