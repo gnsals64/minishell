@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:46:40 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/24 16:24:36 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/25 02:23:49 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,26 @@ t_env	*env_node_creat(char *env)
 	if (!node->value || !node->key)
 		return (NULL);
 	node->next = NULL;
-	node->prev = NULL;
 	return (node);
 }
 
 int	ft_env_creat(t_data *data, char *env)
 {
-	data->env = env_node_creat(env);
+	t_env	*node;
+
+	if (!env)
+		return (0);
+	node = env_node_creat(env);
+	if (!node)
+		ft_exit_parsing_error(data);
 	if (!data->env)
-			ft_exit_parsing_error(data);
-	data->env_head = data->env;
+	{
+		data->env = node;
+		data->env_head = data->env;
+	}
+	data->env->next = node;
+	if (!data->env->next)
+		ft_exit_parsing_error(data);
 	data->env = data->env->next;
 	return (0);
 }
