@@ -41,8 +41,7 @@ int	ft_dup_line_len(char *str, int **index)
 	ft_memset(&state, 0, sizeof(state));
 	while (str[**index] && !(quote_check(&state) && str[**index] == ' '))
 	{
-		if (quote_state(str[**index], &state) == 0)
-			len++;
+		len++;
 		(**index)++;
 	}
 	(**index)++;
@@ -67,11 +66,8 @@ char	*ft_dup_line(char *str, int *index)
 		return (NULL);
 	while (i < len)
 	{
-		if (quote_state(str[start], &state) == 0)
-		{
-			tmp[i] = str[start];
-			i++;
-		}
+		tmp[i] = str[start];
+		i++;
 		start++;
 	}
 	tmp[i] = '\0';
@@ -108,8 +104,6 @@ char	**ft_tokenizer(char *str, t_data *data)
 		ft_exit_parsing_error(data);
 	while (i < len)
 	{
-		while (ft_isspace(str[j]) == 1 && str[j] != '\0')
-			j++;
 		save[i] = ft_dup_line(str, &j);
 		if (!save[i])
 			ft_free_line(save, data);

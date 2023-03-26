@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunaprk <hunaprk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/25 01:39:52 by hunaprk          ###   ########.fr       */
+/*   Updated: 2023/03/27 00:33:57 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ int			ft_change_str_len(char *str, t_data *data);
 char		*change_env_dup(char *str, t_data *data, int len, t_state *state);
 char		*ft_change_str(char *str, t_data *data);
 void		env_cat(t_env_var *var, t_data *data, t_state *state, char *str);
+int			ft_change_str_exitcode_len(char *str);
+char		*ft_load_exitcode(char *str, t_data *data);
+void		cat_exitcode(t_env_var *var);
+char		*change_exitcode(char *str, t_data *data, int len, t_state *state);
 
 //--- utils ---
 int			ft_isspace(char c);
