@@ -75,9 +75,26 @@ char	*change_env_dup(char *str, t_data *data, int len, t_state *state)
 		var.i++;
 		var.j++;
 	}
-	if (!quote_check(state))
-		return (NULL);
 	return (var.change_str);
+}
+
+char	*ft_load_exitcode(char *str, t_data *data)
+{
+	char	*change_str;
+	t_state	state;
+	int		len;
+
+	while (ft_isspace(*str) == 1 && *str != '\0')
+		str++;
+	ft_memset(&state, 0, sizeof(t_state));
+	len = ft_change_str_exitcode_len(str);
+	if (len == -1)
+	{
+		write(2, "close the quote\n", 16);
+		return (NULL);
+	}
+	change_str = change_exitcode(str, data, len, &state);
+	return (change_str);
 }
 
 char	*ft_change_str(char *str, t_data *data)
@@ -87,14 +104,8 @@ char	*ft_change_str(char *str, t_data *data)
 	int		len;
 
 	len = ft_change_str_len(str, data);
-	if (len == -1)
-	{
-		write(2, "close the quote\n", 16);
-		return (NULL);
-	}
-	while (ft_isspace(*str) == 1 && *str != '\0')
-		str++;
 	ft_memset(&state, 0, sizeof(t_state));
 	change_str = change_env_dup(str, data, len, &state);
+	free(str);
 	return (change_str);
 }

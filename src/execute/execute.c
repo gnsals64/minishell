@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:52:07 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/25 02:28:57 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/27 23:50:19 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ void	single_process(t_argv *node)
 	else if(node && !node->cmd)
 		ft_redirect(node->dir_head);
 	dup2(tmp_stdin_fd, STDIN_FILENO);
+	close(tmp_stdin_fd);
 	dup2(tmp_stdout_fd, STDOUT_FILENO);
+	close(tmp_stdout_fd);
 }
 
 void	execute(t_argv	*node)
@@ -50,11 +52,8 @@ void	execute(t_argv	*node)
 	int	pipe_cnt;
 
 	pipe_cnt = check_pipe(node);
-	/*
-	heredoc처리 먼저 해야함
-	if (check_here_doc(node))
+	if (check_doc(node))
 		return ;
-	*/
 	if (pipe_cnt == 0)
 		single_process(node);
 	else

@@ -59,6 +59,10 @@ int			ft_change_str_len(char *str, t_data *data);
 char		*change_env_dup(char *str, t_data *data, int len, t_state *state);
 char		*ft_change_str(char *str, t_data *data);
 void		env_cat(t_env_var *var, t_data *data, t_state *state, char *str);
+int			ft_change_str_exitcode_len(char *str);
+char		*ft_load_exitcode(char *str, t_data *data);
+void		cat_exitcode(t_env_var *var);
+char		*change_exitcode(char *str, t_data *data, int len, t_state *state);
 
 //--- utils ---
 int			ft_isspace(char c);
@@ -82,9 +86,8 @@ void		ft_exit_parsing_error(t_data *data);
 t_data		*ft_init(char **env);
 void		run_program(t_data *data);
 void		handler(int signum);
+void		heredoc_handler(int signum);
 void		handler_q(int signum);
 void		handle_terminal(void);
-
-
 
 #endif

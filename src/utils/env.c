@@ -45,7 +45,7 @@ int	ft_env_creat(t_data *data, char *env)
 	}
 	data->env->next = node;
 	if (!data->env->next)
-		ft_exit_parsing_error(data);
+			ft_exit_parsing_error(data);
 	data->env = data->env->next;
 	return (0);
 }

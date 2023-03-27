@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 16:53:19 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/22 15:08:00 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/25 00:29:16 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	single_builtin(t_argv *node)
 {
-	//if (ft_redirect(node->dir))
-	//	return ;
+	if (ft_redirect(node->dir))
+		return ;
 	run_builtin(node);
 }
 

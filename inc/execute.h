@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:14:19 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/24 01:38:33 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/28 00:36:51 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,10 @@ int		ft_redirect(t_redirect *redir);
 //arr_converter
 char	**arr_converter(void);
 char	*ft_strjoin2(char const *s1, char const *s2);
+//ft_heredoc
+void	manage_doc(char *buf, int fd, int n);
+void	here_doc(int fd[2], char *filename);
+int		create_doc(t_redirect *redir);
+int		ft_doc(t_argv *node, int *flag);
+int		check_doc(t_argv *node);
 #endif

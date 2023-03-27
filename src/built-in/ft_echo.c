@@ -30,6 +30,7 @@ int	check_n_option(char *arg)
 void	ft_echo(t_argv *node)
 {
 	int		n_option;
+	int		i;
 	char	**arg;
 	int		i;
 
