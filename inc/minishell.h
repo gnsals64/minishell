@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/27 00:33:57 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/28 00:23:10 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,8 @@ void		ft_exit_parsing_error(t_data *data);
 t_data		*ft_init(char **env);
 void		run_program(t_data *data);
 void		handler(int signum);
+void		heredoc_handler(int signum);
 void		handler_q(int signum);
 void		handle_terminal(void);
-
-
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:52:07 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/25 01:36:46 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/27 23:50:19 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,8 @@ void	execute(t_argv	*node)
 	int	pipe_cnt;
 
 	pipe_cnt = check_pipe(node);
-	/*
-	heredoc처리 먼저 해야함
-	if (check_here_doc(node))
+	if (check_doc(node))
 		return ;
-	*/
 	if (pipe_cnt == 0)
 		single_process(node);
 	else
