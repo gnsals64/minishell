@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:50:59 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/25 02:33:09 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/28 00:49:40 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	ft_echo(t_argv *node)
 	int		n_option;
 	int		i;
 	char	**arg;
-	int		i;
 
 	arg = &node->cmd[1];
 	n_option = 0;
