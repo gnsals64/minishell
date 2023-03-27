@@ -97,5 +97,4 @@ typedef struct s_info
 
 extern t_info	g_global;
 
-
 #endif
