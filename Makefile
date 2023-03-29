@@ -6,13 +6,13 @@
 #    By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 21:41:07 by hunpark           #+#    #+#              #
-#    Updated: 2023/03/27 23:50:08 by sooyang          ###   ########.fr        #
+#    Updated: 2023/03/29 15:50:40 by sooyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = cc
-FLAG = -Wall -Werror -Wextra
+FLAG = -Wall -Werror -Wextra -fsanitize=address
 INC = -I ./inc
 COMFILE_FLAGS = -lreadline -L$(shell brew --prefix readline)/lib
 INCLUDE_FLAGS = -I$(shell brew --prefix readline)/include

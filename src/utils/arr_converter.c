@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 14:44:57 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/22 15:54:52 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/29 16:30:53 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ char	**arr_converter(void)
 	i = -1;
 	while (++i < size && tmp != NULL)
 	{
-		tmp_str = ft_strjoin(tmp->key, tmp->value);
-		arr[i] = ft_strjoin(tmp_str, "=");
+		tmp_str = ft_strjoin(tmp->key, "=");
+		arr[i] = ft_strjoin(tmp_str, tmp->value);
 		tmp = tmp->next;
 	}
 	return (arr);

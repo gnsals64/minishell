@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 01:24:09 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/25 02:11:29 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/29 16:31:10 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,6 @@ void	ft_execute(t_argv *node)
 	int		valid_path;
 
 	path = path_finding(node->cmd[0], &valid_path);
-	if (!path)
-	{
-	}
 	env_arr = arr_converter();
 	if (execve(path, node->cmd, env_arr) == -1)
 		ft_cmd_error(node->cmd[0]);
