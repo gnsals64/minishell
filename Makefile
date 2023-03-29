@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: hunaprk <hunaprk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 21:41:07 by hunpark           #+#    #+#              #
-#    Updated: 2023/03/29 19:24:26 by sooyang          ###   ########.fr        #
+#    Updated: 2023/03/29 22:08:18 by hunaprk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ all : ${NAME}
 
 ${NAME} :
 	@make -C ${LIBFT}
-	@${CC} -fsanitize=address ${FLAG} ${SRCS} ${COMFILE_FLAGS} ${INCLUDE_FLAGS} ${INC} -lreadline ${LIBFT}/libft.a -o ${NAME}
+	@${CC} -g -fsanitize=leak ${FLAG} ${SRCS} ${COMFILE_FLAGS} ${INCLUDE_FLAGS} ${INC} -lreadline ${LIBFT}/libft.a -o ${NAME}
 
 clean :
 	@make clean -C ${LIBFT}

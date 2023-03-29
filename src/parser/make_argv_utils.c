@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_argv_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hunaprk <hunaprk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 20:20:45 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/21 19:28:30 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/29 22:34:43 by hunaprk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,6 @@ t_redirect	*ft_make_dir_node(t_data *data)
 {
 	t_redirect	*node;
 
-	node = (t_redirect *)malloc(sizeof(t_redirect));
-	if (!node)
-		return (NULL);
-	node->operator = ft_strdup(data->move->str);
 	data->move = data->move->next;
 	if (data->move == NULL)
 	{
@@ -60,6 +56,10 @@ t_redirect	*ft_make_dir_node(t_data *data)
 		ft_putstr_fd("\'\n", 2);
 		return (NULL);
 	}
+	node = (t_redirect *)malloc(sizeof(t_redirect));
+	if (!node)
+		return (NULL);
+	node->operator = ft_strdup(data->move->str);
 	node->filename = ft_strdup(data->move->str);
 	data->move = data->move->next;
 	node->next = NULL;
