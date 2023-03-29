@@ -41,6 +41,7 @@ int	ft_dup_line_len(char *str, int **index)
 	ft_memset(&state, 0, sizeof(state));
 	while (str[**index] && !(quote_check(&state) && str[**index] == ' '))
 	{
+		quote_state(str[**index], &state);
 		len++;
 		(**index)++;
 	}
