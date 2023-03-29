@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:52:07 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/29 20:58:26 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/29 23:22:22 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	single_process(t_argv *node)
 		else if (node)
 			ft_fork(node, 0);
 	}
-	else if(node && !node->cmd)
+	else if (node && !node->cmd)
 		ft_redirect(node->dir_head);
 	dup2(tmp_stdin_fd, STDIN_FILENO);
 	close(tmp_stdin_fd);

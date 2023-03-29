@@ -28,7 +28,7 @@ int	ft_parsing(char *str, t_data *data)
 
 	i = -1;
 	ft_reset(data);
-	load_env  = ft_load_exitcode(str, data);
+	load_env = ft_load_exitcode(str, data);
 	if (!load_env)
 		return (-1);
 	load_env = ft_change_str(load_env, data);
