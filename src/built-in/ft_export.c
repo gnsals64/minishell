@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:22 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/29 20:28:33 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/30 01:00:38 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_export_env(void)
 {
-	t_env	*cur;
+	t_env *cur;
 
 	cur = g_global.env_lst;
 	while (cur)
@@ -28,34 +28,32 @@ void	print_export_env(void)
 	g_global.exit_code = 0;
 }
 
-char	**find_key_value(char *arg)
+char	**find_key(char *arg)
 {
-	char	**result;
-	int		i;
-
-	if (!ft_strchr(arg, '='))
-	{
-		result = (char **)malloc(sizeof(char *) * 2);
-		if (!result)
-		{
-			printf("malloc error\n");
-			return (NULL);
-		}
-		result[0] = ft_strdup(arg);
-		result[1] = NULL;
-		return (result);
-	}
-	result = (char **)malloc(sizeof(char *) * 3);
+	char **result = (char **)malloc(sizeof(char *) * 2);
 	if (!result)
 	{
-		printf("malloc error\n");
+		ft_putstr_fd("malloc error\n", 2);
 		return (NULL);
 	}
-	i = ft_strchr(arg, '=') - arg;
-	result[0] = (char *)malloc(sizeof(char) * i + 1);
+	result[0] = ft_strdup(arg);
+	result[1] = NULL;
+	return (result);
+}
+
+char	**find_key_value(char *arg)
+{
+	char **result = (char **)malloc(sizeof(char *) * 3);
+	if (!result)
+	{
+		ft_putstr_fd("malloc error\n", 2);
+		return (NULL);
+	}
+	int i = ft_strchr(arg, '=') - arg;
+	result[0] = (char *)malloc(sizeof(char) * (i + 1));
 	if (!result[0])
 	{
-		printf("malloc error\n");
+		ft_putstr_fd("malloc error\n", 2);
 		return (NULL);
 	}
 	ft_strlcpy(result[0], arg, i + 1);
@@ -64,9 +62,9 @@ char	**find_key_value(char *arg)
 	return (result);
 }
 
-int	is_valid_name(char *key, char *all)
+int is_valid_name(char *key, char *all)
 {
-	int	i;
+	int i;
 
 	i = -1;
 	if ((!ft_isalpha(key[++i]) && key[i] != '_'))
@@ -77,7 +75,7 @@ int	is_valid_name(char *key, char *all)
 	}
 	while (key[++i])
 	{
-		if (!ft_isalpha(key[i]) && !ft_isdigit(key[i]) && \
+		if (!ft_isalpha(key[i]) && !ft_isdigit(key[i]) &&
 			key[i] != '_')
 		{
 			ft_identifier_error(all);
@@ -89,9 +87,9 @@ int	is_valid_name(char *key, char *all)
 	return (1);
 }
 
-void	double_free_arg(char **argument)
+void double_free_arg(char **argument)
 {
-	int	i;
+	int i;
 
 	i = -1;
 	while (argument && argument[++i])
@@ -99,16 +97,16 @@ void	double_free_arg(char **argument)
 	free(argument);
 }
 
-void	ft_export(t_argv *node)
+void ft_export(t_argv *node)
 {
-	t_env	*cur;
-	char	**argument;
-	int		i;
+	t_env *cur;
+	char **argument;
+	int i;
 
 	if (!node->cmd[1])
 	{
 		print_export_env();
-		return ;
+		return;
 	}
 	i = 1;
 	while (node->cmd[i])

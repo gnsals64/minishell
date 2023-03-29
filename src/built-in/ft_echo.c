@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:50:59 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/28 00:49:40 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/30 01:15:40 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,25 @@ int	check_n_option(char *arg)
 void	ft_echo(t_argv *node)
 {
 	int		n_option;
-	int		i;
+	//int		i;
 	char	**arg;
 
 	arg = &node->cmd[1];
 	n_option = 0;
-	i = 0;
-	if (arg[i])
+	//i = 0;
+	if (arg)
 	{
-		n_option = check_n_option(arg[i]);
-		while (arg[i])
+		n_option = check_n_option(*arg);
+		while (*arg)
 		{
-			if (check_n_option(arg[i]) && n_option == 1)
-				i++;
+			if (check_n_option(*arg) && n_option == 1)
+				arg++;
 			else
 			{
 				if (n_option == 1)
 					n_option++;
-				ft_putstr_fd(arg[i], 1);
-				if (arg[++i])
+				ft_putstr_fd(*arg, 1);
+				if (*++arg)
 					write(1, " ", 1);
 			}
 		}

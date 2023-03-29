@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 23:38:29 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/29 21:00:48 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/30 01:10:27 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	here_doc(int fd[2], char *filename)
 			write(fd[1], "\0", 1);
 			break ;
 		}
+		if (buf == NULL)
+			break ;
 		write(fd[1], buf, ft_strlen(buf));
 		write(fd[1], "\n", 1);
 		free(buf);
