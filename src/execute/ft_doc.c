@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 23:38:29 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/29 19:26:01 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/29 21:00:48 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	check_doc(t_argv *node)
 {
 	int	flag;
 
+	signal(SIGINT, SIG_IGN);
 	flag = 0;
 	if (!node)
 		return (0);
