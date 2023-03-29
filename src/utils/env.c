@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:46:40 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/29 23:21:39 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/29 23:34:49 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_env_creat(t_data *data, char *env)
 	}
 	data->env->next = node;
 	if (!data->env->next)
-		t_exit_parsing_error(data);
+		ft_exit_parsing_error(data);
 	data->env = data->env->next;
 	return (0);
 }
