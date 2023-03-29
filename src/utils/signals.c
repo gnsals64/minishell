@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:25:14 by marvin            #+#    #+#             */
-/*   Updated: 2023/03/28 00:22:19 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/29 15:12:36 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	handler(int signum)
 	printf("\n");
 	rl_on_new_line();
 	rl_redisplay();
+	g_global.exit_code = 1;
 }
 
 void	heredoc_handler(int signum)

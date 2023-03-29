@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:22 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/25 00:34:21 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/28 00:56:24 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	print_export_env(void)
 
 char	**find_key_value(char *arg)
 {
-	char **result;
-	int i;
+	char	**result;
+	int		i;
 
 	if (!ft_strchr(arg, '='))
 	{

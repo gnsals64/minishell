@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:33:29 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/25 01:34:49 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/29 15:27:53 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ void	wait_process(int pipe_cnt)
 	i = -1;
 	while (++i <= pipe_cnt)
 		wait(&status);
+	if (status == 2)
+		g_global.exit_code = status + 128;
+	else if (status == 3)
+		g_global.exit_code = status + 128;
+	else
+		g_global.exit_code = status >> 8;
 }
 
 void	child_process(t_argv *node, int i, int pipe_cnt, int pipes[2][2])
