@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_argv_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunaprk <hunaprk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 20:20:45 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/29 22:34:43 by hunaprk          ###   ########.fr       */
+/*   Updated: 2023/03/29 22:55:36 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,22 @@ t_redirect	*ft_make_dir_node(t_data *data)
 {
 	t_redirect	*node;
 
-	data->move = data->move->next;
-	if (data->move == NULL)
-	{
-		ft_putstr_fd("bash: syntax error near unexpected token 'newline'\n", 2);
-		return (NULL);
-	}
-	if (data->move->type != WORD)
-	{
-		ft_putstr_fd("bash: syntax error near unexpected token \'", 2);
-		ft_putstr_fd(data->move->str, 2);
-		ft_putstr_fd("\'\n", 2);
-		return (NULL);
-	}
 	node = (t_redirect *)malloc(sizeof(t_redirect));
 	if (!node)
 		return (NULL);
 	node->operator = ft_strdup(data->move->str);
+	data->move = data->move->next;
+	if (data->move == NULL)
+	{
+		dir_error_message(1, data, &node);
+		return (NULL);
+	}
 	node->filename = ft_strdup(data->move->str);
+	if (data->move->type != WORD)
+	{
+		dir_error_message(2, data, &node);
+		return (NULL);
+	}
 	data->move = data->move->next;
 	node->next = NULL;
 	return (node);

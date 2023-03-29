@@ -12,6 +12,25 @@
 
 #include "../../inc/minishell.h"
 
+void	dir_error_message(int a, t_data *data, t_redirect **node)
+{
+	if (a == 1)
+	{
+		free((*node)->operator);
+		free(*node);
+		ft_putstr_fd("bash: syntax error near unexpected token 'newline'\n", 2);
+	}
+	else if (a == 2)
+	{
+		free((*node)->operator);
+		free((*node)->filename);
+		free(*node);
+		ft_putstr_fd("bash: syntax error near unexpected token \'", 2);
+		ft_putstr_fd(data->move->str, 2);
+		ft_putstr_fd("\'\n", 2);
+	}
+}
+
 int	ft_creat_argv(t_data *data, int *i)
 {
 	if (data->move == NULL)

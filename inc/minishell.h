@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/25 02:24:40 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/29 22:55:19 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int			ft_merge_data_next(t_data *data, int *i);
 int			ft_creat_argv(t_data *data, int *i);
 void		argv_word(t_data *data, int *i);
 int			argv_dir(t_data	*data);
+void		dir_error_message(int a, t_data *data, t_redirect **node);
 t_redirect	*ft_make_dir_node(t_data *data);
 void		argv_pipe(t_data *data, int *i);
 void		rm_quote(t_data *data);

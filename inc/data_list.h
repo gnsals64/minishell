@@ -24,8 +24,8 @@ enum	e_token
 	PIPE_LINE = '|',
 	REDIR_IN = '<',
 	REDIR_OUT = '>',
-	HERE_DOC,
-	DREDIR_OUT
+	HERE_DOC = 20,
+	DREDIR_OUT = 21
 };
 
 typedef struct s_env_variable
