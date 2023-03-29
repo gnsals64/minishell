@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 23:38:29 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/28 00:39:17 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/29 19:26:01 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ int	create_doc(t_redirect *redir)
 	{
 		close(fd[1]);
 		wait(&status);
+		g_global.exit_code = status >> 8;
+		if (status >> 8 == 1)
+			return (here_doc_exit(fd[0], redir));
 		redir->fd = fd[0];
 	}
 	return (0);

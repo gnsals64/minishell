@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:14:19 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/28 00:36:51 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/29 19:24:09 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,5 @@ void	here_doc(int fd[2], char *filename);
 int		create_doc(t_redirect *redir);
 int		ft_doc(t_argv *node, int *flag);
 int		check_doc(t_argv *node);
+int		here_doc_exit(int fd, t_redirect *redir);
 #endif
