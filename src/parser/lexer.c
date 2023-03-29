@@ -18,11 +18,13 @@ int	ft_save_node(char *tmp, char type, t_data *data)
 	{
 		data->head = ft_lst_new(type, tmp);
 		if (!(data->head))
-			return (-1);
+			ft_exit_parsing_error(data);
 		data->move = data->head;
 		return (0);
 	}
 	data->move->next = ft_lst_new(type, tmp);
+	if (!data->move->next)
+		ft_exit_parsing_error(data);
 	data->move->next->prev = data->move;
 	data->move = data->move->next;
 	return (0);
@@ -42,7 +44,7 @@ int	ft_creat_node(char *s, t_data *data)
 		len = ft_find_substr_len(s, i, &type, data);
 		tmp = ft_substr(s, i, len);
 		if (ft_save_node(tmp, type, data) == -1)
-			return (-1);
+			ft_exit_parsing_error(data);
 		free(tmp);
 		tmp = NULL;
 		i += len;

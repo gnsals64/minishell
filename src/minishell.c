@@ -37,8 +37,6 @@ void	run_program(t_data *data)
 			ft_free_all(data);
 			line = NULL;
 		}
-		else
-			printf("Ctrl + d\n");
 	}
 }
 

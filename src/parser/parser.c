@@ -34,13 +34,16 @@ int	ft_parsing(char *str, t_data *data)
 	load_env = ft_change_str(load_env, data);
 	line = ft_tokenizer(load_env, data);
 	free(load_env);
-	if (!line)
-		return (-1);
 	lexer(line, data);
 	while (line[++i])
 		free(line[i]);
 	free(line);
-	make_argv(data);
-	data->argv_cur = data->argv_head;
+	if (make_argv(data) == -1)
+	{
+		ft_free_all(data);
+		return (-1);
+	}
+	else
+		data->argv_cur = data->argv_head;
 	return (0);
 }

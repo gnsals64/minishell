@@ -19,7 +19,10 @@ int	ft_creat_argv(t_data *data, int *i)
 	else if (data->move->type == WORD)
 		argv_word(data, i);
 	else if (data->move->type != WORD && data->move->type != PIPE_LINE)
-		argv_dir(data);
+	{
+		if (argv_dir(data) == -1)
+			return (-2);
+	}
 	else if (data->move->type == PIPE_LINE)
 	{
 		argv_pipe(data, i);
@@ -28,33 +31,61 @@ int	ft_creat_argv(t_data *data, int *i)
 	return (0);
 }
 
-void	ft_merge_data(t_data *data, int *i)
+int	ft_merge_data(t_data *data, int *i)
 {
+	int	status;
+
+	status = 0;
+	data->argv_head = (t_argv *)malloc(sizeof(t_argv));
 	if (!data->argv_head)
+		ft_exit_parsing_error(data);
+	ft_memset(data->argv_head, 0, sizeof(t_argv));
+	data->argv_cur = data->argv_head;
+	while (status != -1)
 	{
-		data->argv_head = (t_argv *)malloc(sizeof(t_argv));
-		if (!data->argv_head)
-			ft_exit_parsing_error(data);
-		ft_memset(data->argv_head, 0, sizeof(t_argv));
-		data->argv_cur = data->argv_head;
-		while (ft_creat_argv(data, i) != -1)
-			;
-		return ;
+		status = ft_creat_argv(data, i);
+		if (status == -2)
+			return (-1);
 	}
+	return (0);
+}
+
+int	ft_merge_data_next(t_data *data, int *i)
+{
+	int	status;
+
+	status = 0;
 	data->argv_cur->next = (t_argv *)malloc(sizeof(t_argv));
 	if (!data->argv_cur->next)
 		ft_exit_parsing_error(data);
 	ft_memset(data->argv_cur->next, 0, sizeof(t_argv));
 	data->argv_cur = data->argv_cur->next;
-	while (ft_creat_argv(data, i) != -1)
-		;
+	while (status != -1)
+	{
+		status = ft_creat_argv(data, i);
+		if (status == -2)
+			return (-1);
+	}
+	return (0);
 }
 
-void	make_argv(t_data *data)
+int	make_argv(t_data *data)
 {
 	int	i;
 
 	i = 0;
 	while (data->move != NULL)
-		ft_merge_data(data, &i);
+	{
+		if (!data->argv_head)
+		{
+			if (ft_merge_data(data, &i) == -1)
+				return (-1);
+		}
+		else
+		{
+			if (ft_merge_data_next(data, &i) == -1)
+				return (-1);
+		}
+	}
+	return (0);
 }

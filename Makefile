@@ -31,7 +31,7 @@ all : ${NAME}
 
 ${NAME} :
 	@make -C ${LIBFT}
-	@${CC} ${FLAG} ${SRCS} ${COMFILE_FLAGS} ${INCLUDE_FLAGS} ${INC} -lreadline ${LIBFT}/libft.a -o ${NAME}
+	@${CC} -fsanitize=address ${FLAG} ${SRCS} ${COMFILE_FLAGS} ${INCLUDE_FLAGS} ${INC} -lreadline ${LIBFT}/libft.a -o ${NAME}
 
 clean :
 	@make clean -C ${LIBFT}

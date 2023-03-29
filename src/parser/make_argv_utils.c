@@ -49,29 +49,38 @@ t_redirect	*ft_make_dir_node(t_data *data)
 	node->operator = ft_strdup(data->move->str);
 	data->move = data->move->next;
 	if (data->move == NULL)
-		return (node);
-	if (data->move->type != WORD)
+	{
+		ft_putstr_fd("bash: syntax error near unexpected token 'newline'\n", 2);
 		return (NULL);
+	}
+	if (data->move->type != WORD)
+	{
+		ft_putstr_fd("bash: syntax error near unexpected token \'", 2);
+		ft_putstr_fd(data->move->str, 2);
+		ft_putstr_fd("\'\n", 2);
+		return (NULL);
+	}
 	node->filename = ft_strdup(data->move->str);
 	data->move = data->move->next;
 	node->next = NULL;
 	return (node);
 }
 
-void	argv_dir(t_data	*data)
+int	argv_dir(t_data	*data)
 {
 	if (!data->argv_cur->dir)
 	{
 		data->argv_cur->dir = ft_make_dir_node(data);
 		data->argv_cur->dir_head = data->argv_cur->dir;
 		if (!data->argv_cur->dir)
-			return ;
-		return ;
+			return (-1);
+		return (0);
 	}
 	data->argv_cur->dir->next = ft_make_dir_node(data);
 	if (!data->argv_cur->dir->next)
-		return ;
+		return (-1);
 	data->argv_cur->dir = data->argv_cur->dir->next;
+	return (0);
 }
 
 void	argv_word(t_data *data, int *i)
