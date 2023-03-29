@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:50:40 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 13:26:49 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/30 01:26:54 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	ft_env(t_argv *node)
 	cursor = g_global.env_lst;
 	while (cursor != NULL)
 	{
-		printf("%s=%s\n", cursor->key, cursor->value);
+		if (cursor->value)
+			printf("%s=%s\n", cursor->key, cursor->value);
 		cursor = cursor->next;
 	}
 	g_global.exit_code = 0;
