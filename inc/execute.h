@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:14:19 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/29 19:24:09 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/29 20:10:59 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int		is_builtin(char *cmd);
 int		run_builtin(t_argv *node);
 //ft_error
 void	ft_error(char *s, int exit_code);
+void	ft_identifier_error(char *s);
 void	ft_cmd_error(char *s);
 //ft_execute
 void	ft_execute(t_argv *node);

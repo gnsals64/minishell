@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:22 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/29 17:24:19 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/29 20:28:33 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,18 @@ int	is_valid_name(char *key, char *all)
 	int	i;
 
 	i = -1;
-	if (!ft_isalpha(key[++i]) || key[i] != '_')
+	if ((!ft_isalpha(key[++i]) && key[i] != '_'))
 	{
-		printf("export: `%s': not a valid identifier\n", all);
+		ft_identifier_error(all);
 		g_global.exit_code = 1;
 		return (0);
 	}
 	while (key[++i])
 	{
-		if (!ft_isalpha(key[i]) || !ft_isdigit(key[i]) || \
+		if (!ft_isalpha(key[i]) && !ft_isdigit(key[i]) && \
 			key[i] != '_')
 		{
-			printf("export: `%s': not a valid identifier\n", all);
+			ft_identifier_error(all);
 			g_global.exit_code = 1;
 			return (0);
 		}
@@ -114,11 +114,10 @@ void	ft_export(t_argv *node)
 	while (node->cmd[i])
 	{
 		argument = find_key_value(node->cmd[i]);
-		printf("%s\n", argument[0]);
 		if (is_valid_name(argument[0], node->cmd[i]))
 		{
-			cur = set_add_env(node->cmd[i]);
-			if (argument[1])
+			cur = set_add_env(argument[0]);
+			if (argument[1] != 0)
 			{
 				free(cur->value);
 				cur->value = ft_strdup(argument[1]);
