@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:14:19 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/30 01:29:57 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/30 01:58:37 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		ft_strcmp(const char *s1, const char *s2);
 t_env	*add_env(char *key);
 t_env	*set_add_env(char *key);
 t_env	*find_env(char *key);
-char	**find_key(char *arg);
 //ft_cd.c
 void	ft_cd(t_argv *node);
 //fd_echo.c

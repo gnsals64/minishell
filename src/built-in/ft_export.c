@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:22 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/30 01:24:28 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/30 02:03:20 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,18 @@ char	**find_key_value(char *arg)
 	{
 		result = (char **)malloc(sizeof(char *) * 2);
 		if (!result)
-		{
-			printf("malloc error\n");
-			return (NULL);
-		}
+			ft_error("malloc error", 1);
 		result[0] = ft_strdup(arg);
 		result[1] = NULL;
 		return (result);
 	}
 	result = (char **)malloc(sizeof(char *) * 3);
 	if (!result)
-	{
-		printf("malloc error\n");
-		return (NULL);
-	}
+		ft_error("malloc error", 1);
 	i = ft_strchr(arg, '=') - arg;
 	result[0] = (char *)malloc(sizeof(char) * i + 1);
 	if (!result[0])
-	{
-		printf("malloc error\n");
-		return (NULL);
-	}
+		ft_error("malloc error", 1);
 	ft_strlcpy(result[0], arg, i + 1);
 	result[1] = ft_strdup(arg + i + 1);
 	result[2] = NULL;

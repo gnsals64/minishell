@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 21:46:14 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/30 01:18:00 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/30 01:58:10 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,19 +70,4 @@ t_env	*find_env(char *key)
 	if (!tmp)
 		return (0);
 	return (tmp);
-}
-
-char	**find_key(char *arg)
-{
-	char	**result;
-
-	result = (char **)malloc(sizeof(char *) * 2);
-	if (!result)
-	{
-		ft_putstr_fd("malloc error\n", 2);
-		return (NULL);
-	}
-	result[0] = ft_strdup(arg);
-	result[1] = NULL;
-	return (result);
 }
