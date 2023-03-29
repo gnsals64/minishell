@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:48 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/21 19:32:15 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/30 01:35:22 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ void	ft_unset(t_argv *node)
 			while (tmp_env->next && ft_strcmp(tmp_env->next->key, *str))
 				tmp_env = tmp_env->next;
 			if (!tmp_env->next)
-			{
-				ft_putstr_fd("not a valid identifier\n", 2);
 				g_global.exit_code = 1;
-			}
 			else if (!tmp_env->next->next)
 				free_last_env(tmp_env);
 			else

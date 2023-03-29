@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:14:19 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/30 01:18:27 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/30 01:29:57 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_exit(t_argv *node);
 //ft_export.c
 void	double_free_arg(char **argument);
 void	ft_export(t_argv *node);
+int		is_valid_name(char *key, char *all);
 //ft_pwd.c
 void	ft_pwd(void);
 //ft_unset.c

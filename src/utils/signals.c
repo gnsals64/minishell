@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:25:14 by marvin            #+#    #+#             */
-/*   Updated: 2023/03/29 17:27:31 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/30 01:53:05 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	handler(int signum)
 {
 	if (signum != SIGINT)
 		return ;
-	rl_replace_line("", 1);
+	rl_replace_line("", 0);
 	printf("\n");
 	rl_on_new_line();
 	rl_redisplay();
