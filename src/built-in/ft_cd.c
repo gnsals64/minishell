@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:10 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/29 23:23:15 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/31 00:24:13 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,25 @@ void	change_pwd_env(char *pwd)
 
 void	ft_cd(t_argv *node)
 {
-	char	*path;
+	int		error;
+	char	*err_msg;
+	char	*next_dir;
 	char	pwd[MAX_BUF];
+	t_env	*home;
 
-	if (!node->cmd || node->cmd[1] == NULL)
+	next_dir = node->cmd[1];
+	home = find_env("HOME");
+	if ((!node->cmd[1] && home) || ft_strcmp(node->cmd[1], "~") == 0)
+		next_dir = home->value;
+	error = chdir(next_dir);
+	if (error || !getcwd(pwd, MAX_BUF))
 	{
-		ft_putstr_fd("argument error\n", 2);
+		if (!node->cmd[1])
+			err_msg = "bash: cd: HOME not set\n";
+		else
+			err_msg = "bash: cd: No such file or directory\n";
+		ft_putstr_fd(err_msg, 2);
 		g_global.exit_code = 1;
-		return ;
-	}
-	path = node->cmd[1];
-	if (chdir(path) == -1 || !getcwd(pwd, MAX_BUF))
-	{
-		ft_putstr_fd("fail directory change\n", 2);
-		g_global.exit_code = 1;
-		return ;
 	}
 	change_pwd_env(pwd);
 	g_global.exit_code = 0;
