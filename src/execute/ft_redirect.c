@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirect.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:33:27 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/29 23:21:49 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/31 08:04:27 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ int	open_tmp_stdin(t_redirect *redir, int *flag)
 {
 	int	infile_fd;
 
+	if (! redir->filename)
+	{
+		*flag = 1;
+		return (-1);
+	}
 	if (ft_strcmp(redir->operator, "<") == 0)
 		infile_fd = open(redir->filename, O_RDONLY, 0644);
 	if (ft_strcmp(redir->operator, "<<") == 0)

@@ -6,7 +6,7 @@
 /*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 23:38:29 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/30 01:54:42 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/31 01:26:47 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,15 @@ int	ft_doc(t_argv *node, int *flag)
 {
 	t_redirect	*tmp;
 
-	signal(SIGINT, SIG_IGN);
-	signal(SIGQUIT, SIG_IGN);
 	tmp = node->dir_head;
 	while (tmp)
 	{
 		if (ft_strcmp(tmp->operator, "<<") == 0)
+		{
+			signal(SIGINT, SIG_IGN);
+			signal(SIGQUIT, SIG_IGN);
 			*flag = create_doc(tmp);
+		}
 		if (*flag)
 			return (*flag);
 		tmp = tmp->next;
