@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:48 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/30 01:35:22 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/31 14:19:45 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ void	ft_unset(t_argv *node)
 		}
 		str++;
 	}
+	g_global.exit_code = 0;
 }

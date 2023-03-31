@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:42:30 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/29 20:05:22 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/31 13:59:23 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_cmd_error(char *s)
 {
-	ft_putstr_fd("bash: ", 2);
+	ft_putstr_fd("minishell: ", 2);
 	if (s != 0 && *s != 0)
 		ft_putstr_fd(s, 2);
 	ft_putstr_fd(": command not found\n", 2);

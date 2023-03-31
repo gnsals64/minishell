@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:25:14 by marvin            #+#    #+#             */
-/*   Updated: 2023/03/30 01:53:05 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/31 13:54:42 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ void	heredoc_handler(int signum)
 void	handler_q(int signum)
 {
 	if (signum != SIGQUIT)
+		return ;
+	rl_on_new_line();
+	rl_redisplay();
+}
+
+void	child_handler(int signum)
+{
+	if (signum != SIGINT | signum != SIGQUIT)
 		return ;
 	rl_on_new_line();
 	rl_redisplay();

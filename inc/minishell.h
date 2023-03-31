@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/31 17:58:05 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/31 13:52:15 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void		run_program(t_data *data);
 void		handler(int signum);
 void		heredoc_handler(int signum);
 void		handler_q(int signum);
+void	    child_handler(int signum);
 void		handle_terminal(void);
 
 #endif
