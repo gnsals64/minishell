@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:48:41 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/31 18:02:13 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/31 18:38:20 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ char	*rm_quote(char *str, t_data *data)
 	int		i;
 	char	*tmp;
 
+	if (!str)
+		return (NULL);
 	tmp = ft_strdup("");
 	if (!tmp)
 		ft_exit_parsing_error(data);

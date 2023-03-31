@@ -106,7 +106,6 @@ char	*ft_change_str(char *str, t_data *data)
 	len = ft_change_str_len(str, data);
 	ft_memset(&state, 0, sizeof(t_state));
 	change_str = change_env_dup(str, data, len, &state);
-	change_str = rm_quote(change_str, data);
 	free(str);
 	return (change_str);
 }
