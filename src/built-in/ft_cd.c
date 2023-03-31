@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:10 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/31 00:40:02 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/31 13:57:33 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ void	ft_cd(t_argv *node)
 	if (error || !getcwd(pwd, MAX_BUF))
 	{
 		if (!node->cmd[1])
-			err_msg = "bash: cd: HOME not set\n";
+			err_msg = "minishell: cd: HOME not set\n";
 		else
-			err_msg = "bash: cd: No such file or directory\n";
+			err_msg = "minishell: cd: No such file or directory\n";
 		ft_putstr_fd(err_msg, 2);
 		g_global.exit_code = 1;
 	}

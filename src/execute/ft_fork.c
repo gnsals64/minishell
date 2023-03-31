@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:33:29 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/29 15:50:00 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/31 13:56:32 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,23 @@ void	wait_process(int pipe_cnt)
 	while (++i <= pipe_cnt)
 		wait(&status);
 	if (status == 2)
+	{
+		printf("^C\n");
 		g_global.exit_code = status + 128;
+	}
 	else if (status == 3)
+	{
+		printf("^\\Quit: 3\n");
 		g_global.exit_code = status + 128;
+	}
 	else
 		g_global.exit_code = status >> 8;
 }
 
 void	child_process(t_argv *node, int i, int pipe_cnt, int pipes[2][2])
 {
+	signal(SIGINT, child_handler);
+	signal(SIGQUIT, child_handler);
 	close(pipes[0][0]);
 	if (pipe_cnt && i != pipe_cnt)
 	{
@@ -59,6 +67,8 @@ void	pipe_generate(t_argv *node, int pipe_cnt, int pipes[2][2])
 	pid_t	pid;
 
 	i = -1;
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
 	while (++i <= pipe_cnt)
 	{
 		if (pipe(pipes[0]) == -1)
