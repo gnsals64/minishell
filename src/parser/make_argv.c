@@ -18,16 +18,18 @@ void	dir_error_message(int a, t_data *data, t_redirect **node)
 	{
 		free((*node)->operator);
 		free(*node);
-		ft_putstr_fd("bash: syntax error near unexpected token 'newline'\n", 2);
+		ft_putstr_fd("minishell: syntax error near unexpected token 'newline'\n", 2);
+		g_global.exit_code = 258;
 	}
 	else if (a == 2)
 	{
 		free((*node)->operator);
 		free((*node)->filename);
 		free(*node);
-		ft_putstr_fd("bash: syntax error near unexpected token \'", 2);
+		ft_putstr_fd("minishell: syntax error near unexpected token \'", 2);
 		ft_putstr_fd(data->move->str, 2);
 		ft_putstr_fd("\'\n", 2);
+		g_global.exit_code = 258;
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:33:29 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/31 13:56:32 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/04/01 01:36:13 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,12 @@ void	pipe_generate(t_argv *node, int pipe_cnt, int pipes[2][2])
 		if (pid == 0)
 			child_process(node, i, pipe_cnt, pipes);
 		close(pipes[0][1]);
-		if (pid > 0)
-		{
-			if (i > 0)
-				close(pipes[1][0]);
-			pipes[1][0] = pipes[0][0];
-			if (i == pipe_cnt)
-				close(pipes[0][0]);
-			node = node->next;
-		}
+		if (i > 0)
+			close(pipes[1][0]);
+		pipes[1][0] = pipes[0][0];
+		if (i == pipe_cnt)
+			close(pipes[0][0]);
+		node = node->next;
 	}
 	wait_process(pipe_cnt);
 }
