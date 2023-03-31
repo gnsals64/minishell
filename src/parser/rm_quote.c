@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:48:41 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/21 19:28:29 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/31 18:38:20 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,46 @@ int	handle_double_quote(t_data *data, char *str)
 	return (0);
 }
 
-void	rm_quote(t_data *data)
+char	*ft_single_join(char *s, char c)
 {
-	data->move = data->head;
-	while (data->move != NULL)
+	char	*tmp;
+	int		len;
+
+	len = ft_strlen(s);
+	tmp = (char *)malloc(sizeof(char) * (len + 2));
+	if (!tmp)
+		return (NULL);
+	ft_strlcpy(tmp, s, len + 1);
+	tmp[len] = c;
+	tmp[len + 1] = '\0';
+	free(s);
+	return (tmp);
+}
+
+char	*rm_quote(char *str, t_data *data)
+{
+	t_state	state;
+	int		i;
+	char	*tmp;
+
+	if (!str)
+		return (NULL);
+	tmp = ft_strdup("");
+	if (!tmp)
+		ft_exit_parsing_error(data);
+	i = 0;
+	ft_memset(&state, 0, sizeof(t_state));
+	while (str[i])
 	{
-		if (data->move->str[0] == '\'')
-			handle_single_quote(data, data->move->str);
-		else if (data->move->str[0] == '\"')
-			handle_double_quote(data, data->move->str);
-		data->move = data->move->next;
+		if (quote_state(str[i], &state) == 1)
+		{
+			i++;
+			if (str[i] == '\0')
+				break ;
+		}
+		tmp = ft_single_join(tmp, str[i]);
+		i++;
 	}
+	free(str);
+	return (tmp);
 }

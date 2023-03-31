@@ -63,6 +63,5 @@ void	lexer(char **line, t_data *data)
 			ft_free_line(line, data);
 		i++;
 	}
-	rm_quote(data);
 	data->move = data->head;
 }

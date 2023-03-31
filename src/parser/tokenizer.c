@@ -111,5 +111,8 @@ char	**ft_tokenizer(char *str, t_data *data)
 		i++;
 	}
 	save[len] = NULL;
+	i = -1;
+	while (save[++i] != NULL)
+		save[i] = rm_quote(save[i], data);
 	return (save);
 }
