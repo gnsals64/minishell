@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirect.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:33:27 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/31 08:04:27 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/03/31 13:57:41 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	open_tmp_stdin(t_redirect *redir, int *flag)
 		infile_fd = redir->fd;
 	if (infile_fd == -1)
 	{
-		ft_putstr_fd("bash: ", 2);
+		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(redir->filename, 2);
 		ft_putstr_fd(": No such file or directory\n", 2);
 		*flag = 1;
