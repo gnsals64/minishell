@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/29 22:55:19 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/03/31 17:58:05 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int			argv_dir(t_data	*data);
 void		dir_error_message(int a, t_data *data, t_redirect **node);
 t_redirect	*ft_make_dir_node(t_data *data);
 void		argv_pipe(t_data *data, int *i);
-void		rm_quote(t_data *data);
+char		*rm_quote(char *str, t_data *data);
+char		*ft_single_join(char *s, char c);
 int			handle_double_quote(t_data *data, char *str);
 int			handle_single_quote(t_data *data, char *str);
 int			ft_envlen(char *str, t_state *state);

@@ -16,8 +16,6 @@ char	ft_isspecial(char c)
 {
 	if (c == PIPE_LINE)
 		return (PIPE_LINE);
-	if (c == ENV)
-		return (ENV);
 	if (c == REDIR_IN)
 		return (REDIR_IN);
 	if (c == REDIR_OUT)

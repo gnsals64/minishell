@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 21:41:07 by hunpark           #+#    #+#              #
-#    Updated: 2023/03/31 08:05:35 by sooyang          ###   ########.fr        #
+#    Updated: 2023/03/31 18:09:49 by hunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = cc
-FLAG = -Wall -Werror -Wextra -fsanitize=address
+FLAG = -Wall -Werror -Wextra #-fsanitize=address
 INC = -I ./inc
 COMFILE_FLAGS = -lreadline -L$(shell brew --prefix readline)/lib
 INCLUDE_FLAGS = -I$(shell brew --prefix readline)/include

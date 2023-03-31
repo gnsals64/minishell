@@ -77,7 +77,8 @@ void	cat_exitcode(t_env_var *var)
 	char	*tmp;
 
 	tmp = ft_itoa(g_global.exit_code);
-	ft_strlcat(var->change_str, tmp, sizeof(tmp));
+	ft_strlcat(var->change_str, tmp,
+		ft_strlen(tmp) + ft_strlen(var->change_str) + 1);
 	var->j += 2;
 	var->i += ft_strlen(tmp);
 	free(tmp);
