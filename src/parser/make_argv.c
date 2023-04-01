@@ -114,5 +114,6 @@ int	make_argv(t_data *data)
 				return (-1);
 		}
 	}
+	data->argv_cur = data->argv_head;
 	return (0);
 }

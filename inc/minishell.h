@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:33:20 by hunpark           #+#    #+#             */
-/*   Updated: 2023/04/01 01:36:58 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/04/01 20:30:10 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int			ft_change_str_exitcode_len(char *str);
 char		*ft_load_exitcode(char *str, t_data *data);
 void		cat_exitcode(t_env_var *var);
 char		*change_exitcode(char *str, t_data *data, int len, t_state *state);
+void		quote_handle(t_data *data);
 
 //--- utils ---
 int			ft_isspace(char c);

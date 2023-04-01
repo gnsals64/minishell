@@ -43,7 +43,7 @@ int	ft_parsing(char *str, t_data *data)
 		ft_free_all(data);
 		return (-1);
 	}
-	else
-		data->argv_cur = data->argv_head;
+	quote_handle(data);
+	data->argv_cur = data->argv_head;
 	return (0);
 }
