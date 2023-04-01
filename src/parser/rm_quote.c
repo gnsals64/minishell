@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:48:41 by hunpark           #+#    #+#             */
-/*   Updated: 2023/03/31 18:38:20 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/04/01 20:30:47 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,24 @@ char	*rm_quote(char *str, t_data *data)
 	}
 	free(str);
 	return (tmp);
+}
+
+void	quote_handle(t_data *data)
+{
+	int	i;
+
+	data->argv_cur = data->argv_head;
+	while (data->argv_cur != NULL)
+	{
+		i = 0;
+		if (data->argv_cur->cmd != NULL)
+		{
+			while (data->argv_cur->cmd[i] != NULL)
+			{
+				data->argv_cur->cmd[i] = rm_quote(data->argv_cur->cmd[i], data);
+				i++;
+			}
+		}
+		data->argv_cur = data->argv_cur->next;
+	}
 }
