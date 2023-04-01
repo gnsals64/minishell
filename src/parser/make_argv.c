@@ -46,6 +46,12 @@ int	ft_creat_argv(t_data *data, int *i)
 	}
 	else if (data->move->type == PIPE_LINE)
 	{
+		if (data->move->next == NULL || data->move->next->type == PIPE_LINE)
+		{
+			ft_putstr_fd("syntax error near unexpected token '|'\n", 2);
+			g_global.exit_code = 258;
+			return (-2);
+		}
 		argv_pipe(data, i);
 		return (-1);
 	}

@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 01:24:09 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/29 23:22:10 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/04/01 17:44:40 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,11 @@ void	ft_execute(t_argv *node)
 	char	**env_arr;
 	int		valid_path;
 
+	if (node->cmd == NULL)
+	{
+		g_global.exit_code = 1;
+		exit (1);
+	}
 	path = path_finding(node->cmd[0], &valid_path);
 	env_arr = arr_converter();
 	if (execve(path, node->cmd, env_arr) == -1)
