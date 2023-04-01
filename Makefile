@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hunaprk <hunaprk@student.42.fr>            +#+  +:+       +#+         #
+#    By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 21:41:07 by hunpark           #+#    #+#              #
-#    Updated: 2023/04/01 01:04:10 by hunaprk          ###   ########.fr        #
+#    Updated: 2023/04/01 17:25:42 by hunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = cc
-FLAG = -Wall -Werror -Wextra -fsanitize=address
+FLAG = -Wall -Werror -Wextra #-fsanitize=address
 INC = -I ./inc
 COMFILE_FLAGS = -lreadline -L$(shell brew --prefix readline)/lib
 INCLUDE_FLAGS = -I$(shell brew --prefix readline)/include
@@ -31,7 +31,7 @@ all : ${NAME}
 
 ${NAME} :
 	@make -C ${LIBFT}
-	@${CC} ${FLAG} ${SRCS} ${COMFILE_FLAGS} ${INCLUDE_FLAGS} ${INC} -lreadline ${LIBFT}/libft.a -o ${NAME}
+	@${CC}  ${FLAG} ${SRCS} ${COMFILE_FLAGS} ${INCLUDE_FLAGS} ${INC} -lreadline ${LIBFT}/libft.a -o ${NAME}
 
 clean :
 	@make clean -C ${LIBFT}
