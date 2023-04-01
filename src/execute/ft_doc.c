@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 23:38:29 by sooyang           #+#    #+#             */
-/*   Updated: 2023/04/01 16:54:10 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/04/01 17:34:23 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ void	here_doc(int fd[2], char *filename)
 			break ;
 		}
 		if (buf == NULL)
+		{
+			write(fd[1], "\0", 1);
 			break ;
+		}
 		write(fd[1], buf, ft_strlen(buf));
 		write(fd[1], "\n", 1);
 		free(buf);

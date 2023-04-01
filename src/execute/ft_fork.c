@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:33:29 by sooyang           #+#    #+#             */
-/*   Updated: 2023/04/01 01:36:13 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/04/01 17:43:26 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	child_process(t_argv *node, int i, int pipe_cnt, int pipes[2][2])
 		if (ft_redirect(node->dir_head))
 			exit (1);
 	}
-	if (node->cmd[0] && is_builtin(node->cmd[0]))
+	if (node->cmd != NULL && node->cmd[0] != NULL && is_builtin(node->cmd[0]))
 		run_builtin(node);
 	else
 		ft_execute(node);
