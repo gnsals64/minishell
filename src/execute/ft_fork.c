@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:33:29 by sooyang           #+#    #+#             */
-/*   Updated: 2023/04/01 17:43:26 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/04/03 15:21:25 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	wait_process(int pipe_cnt)
+void	wait_process(int pipe_cnt, long *pidlst)
 {
 	int	i;
 	int	status;
 
 	i = -1;
 	while (++i <= pipe_cnt)
-		wait(&status);
+		waitpid(pidlst[i], &status, 0);
 	if (status == 2)
 	{
 		printf("^C\n");
@@ -61,7 +61,7 @@ void	child_process(t_argv *node, int i, int pipe_cnt, int pipes[2][2])
 	exit (0);
 }
 
-void	pipe_generate(t_argv *node, int pipe_cnt, int pipes[2][2])
+void	pipe_generate(t_argv *node, int pipe_cnt, int pipes[2][2], long *pidlst)
 {
 	int		i;
 	pid_t	pid;
@@ -85,14 +85,17 @@ void	pipe_generate(t_argv *node, int pipe_cnt, int pipes[2][2])
 		if (i == pipe_cnt)
 			close(pipes[0][0]);
 		node = node->next;
+		pidlst[i] = pid;
 	}
-	wait_process(pipe_cnt);
+	wait_process(pipe_cnt, pidlst);
 }
 
 void	ft_fork(t_argv *node, int pipe_cnt)
 {
 	int		pipes[2][2];
+	long	*pidlst;
 
-	pipe_generate(node, pipe_cnt, pipes);
+	pidlst = (long *)malloc(sizeof(long) * pipe_cnt + 1);
+	pipe_generate(node, pipe_cnt, pipes, pidlst);
 	return ;
 }

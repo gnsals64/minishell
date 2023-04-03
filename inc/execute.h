@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooyang <sooyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sooyang <sooyang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:14:19 by sooyang           #+#    #+#             */
-/*   Updated: 2023/03/30 01:58:37 by sooyang          ###   ########.fr       */
+/*   Updated: 2023/04/03 15:22:10 by sooyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	single_process(t_argv *node);
 int		check_pipe(t_argv *node);
 //ft_fork
 void	ft_fork(t_argv *node, int pipe_cnt);
-void	pipe_generate(t_argv *node, int pipe_cnt, int pipes[2][2]);
+void	pipe_generate(t_argv *node, int pipe_cnt, int pipes[2][2], long *pidlst);
 void	child_process(t_argv *node, int i, int pipe_cnt, int pipes[2][2]);
-void	wait_process(int pipe_cnt);
+void	wait_process(int pipe_cnt, long *pidlst);
 //builtin
 void	single_builtin(t_argv *node);
 int		is_builtin(char *cmd);
